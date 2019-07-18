@@ -22,6 +22,8 @@
                 <th scope="col">Ville</th>
                 <th scope="col">Courriel</th>
                 <th scope="col">Téléphone</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
     
             </tr>
         </thead>
@@ -37,7 +39,19 @@
                 <td>{{ personne.ville }}</td>
                 <td>{{ personne.email }}</td>
                 <td>{{ personne.telephone }}</td>
-                
+                {% if stagiaires is defined %}
+
+                    <td><a href=""><i class="fas fa-edit"></i></a></td>
+                    <td><a href="{{ path('deleteStagiaire',{'id':personne.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+
+
+                {% else %}
+
+                    {# <td><a href="{{ path('deleteFormateur',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td> #}
+                    <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
+
+                {% endif %}
+
             </tr>
             
             {% endfor %}

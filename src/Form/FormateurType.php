@@ -19,7 +19,10 @@ class FormateurType extends AbstractType
             ->add('nom',TextType::class)
             ->add('prenom',TextType::class)
             ->add('sexe',ChoiceType::class, ["choices"=>["Homme"=>"H", "Femme"=>"F"], "expanded"=>true])
-            ->add('dateNaissance',DateType::class)
+            ->add('dateNaissance',DateType::class, [                
+                'years' => range(date('Y'),date('Y')-77),
+                'label' => 'Date de naissance' ,
+                'format' => 'ddMMMMyyyy' ])
             ->add('ville',TextType::class)
             ->add('email',TextType::class)
             ->add('telephone',TextType::class)

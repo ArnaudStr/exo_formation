@@ -35,13 +35,11 @@ class Formation
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Stagiaire", inversedBy="formations")
-     * @ORM\Column(nullable=true)
      */
     private $stagiaires;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Module", inversedBy="formations")
-     * @ORM\Column(nullable=true)
      */
     private $modules;
 

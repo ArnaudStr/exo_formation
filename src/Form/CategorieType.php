@@ -19,14 +19,13 @@ class CategorieType extends AbstractType
     {
         $builder
             ->add('nom',TextType::class)
-            ->add("formateurs", EntityType::class, [
-                "class"=>Formateur::class, 
-                "query_builder"=> function(EntityRepository $er){
-                    return $er->createQueryBuilder("f")->orderBy("f.nom", "ASC");
-                }, 
-                "choice_label"=> "nom"
-                
-            ])
+            // ->add("formateurs", EntityType::class, [
+            //     "class"=>Formateur::class, 
+            //     "query_builder"=> function(EntityRepository $er){
+            //         return $er->createQueryBuilder("f")->orderBy("f.nom", "ASC");
+            //     }, 
+            //     "choice_label"=> "nom"
+            // ])
             // ->add("modules", EntityType::class, [
             //     "class"=>ModuleType::class, 
             //     "query_builder"=> function(EntityRepository $er){

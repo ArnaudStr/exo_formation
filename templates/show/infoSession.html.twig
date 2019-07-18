@@ -2,10 +2,12 @@
 
 {% block body %}
 
-        {% for module in formation.modules %}
+        {% if formation.modules %}
+                {% for module in formation.modules %}
 
-                <p>{{ module.nom }} : durée du module, nom des formateurs</p>
+                        <p>{{ module.nom }} : durée du module, nom des formateurs</p>
 
-        {% endfor %}
+                {% endfor %}
+        {% endif %}
 
 {% endblock %}

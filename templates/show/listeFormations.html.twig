@@ -17,15 +17,18 @@
         </thead>
         
         <tbody>
+        {% for formation in formations %}
+            {% set nbPlacesRestantes = formation.nbPlaces - formation.stagiaires|length %}
             <tr>
-            {# {% set nbPlacesRestantes = formation.nbPlaces - formation.stagiaires|length %}
                 <td>{{  formation.nom  }}</td>
-                <td>{{  formation.dateDebut  }}</td>
-                <td>{{  formation.dateFin  }}</td>
+                <td>{{  formation.dateDebut|date("Y-m-d")  }}</td>
+                <td>{{  formation.dateFin|date("Y-m-d")  }}</td>
                 <td>{{  formation.nbPlaces  }}</td>
                 <td>{{  formation.stagiaires|length  }}</td>
-                <td>{{  nbPlacesRestantes  }}</td> #}
+                <td>{{  nbPlacesRestantes  }}</td>
             </tr>
+        {% endfor %}
+
         </tbody>
     </table>
 

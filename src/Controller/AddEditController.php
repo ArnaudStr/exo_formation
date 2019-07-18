@@ -132,6 +132,18 @@ class AddEditController extends AbstractController
     }
 
     /**
+     * @Route("/delete/stagiaire/{id}", name="deleteStagiaire")
+     */
+    public function deleteStagiaire(Stagiaire $stagiaire, ObjectManager $manager) {
+
+        $manager->remove($stagiaire);
+        $manager->flush();
+  
+        return $this->redirectToRoute('showListeStagiaires');
+  
+    }
+
+    /**
      * @Route("/add/module", name="addModule")
      * @Route("/edit/module/{id}", name="editModule")
      */

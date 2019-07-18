@@ -19,12 +19,12 @@ class ShowController extends AbstractController
      */
     public function showListeFormations() {
         // On enregistre les formations
-        // $all_formations = $this->getDoctrine()->getRepository(Formation::class)->findAll();
+        $all_formations = $this->getDoctrine()->getRepository(Formation::class)->findAll();
 
         // Appel à la vue d'affichage des formations
         return $this->render('show/listeFormations.html.twig', [
             'title' => 'Liste des formations',
-            // 'formations' => $all_formations
+            'formations' => $all_formations
         ]);
     }
 

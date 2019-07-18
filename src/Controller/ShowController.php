@@ -29,7 +29,7 @@ class ShowController extends AbstractController
     }
 
     /**
-     * @Route("/show/infoStagiaire/{id}", name="showInfoSession")
+     * @Route("/show/infoSession/{id}", name="showInfoSession")
      */
     public function showInfoSession(Formation $formation, ObjectManager $manager, Request $request){
 
@@ -58,7 +58,7 @@ class ShowController extends AbstractController
     }
 
     /**
-     * @Route("/show/listeStagiairesSession{id}", name="showListeStagiairesSession")
+     * @Route("/show/listeStagiairesSession/{id}", name="showListeStagiairesSession")
      */
     public function showListeStagiairesSession(Formation $formation, ObjectManager $manager, Request $request)
     {

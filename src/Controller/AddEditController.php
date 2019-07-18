@@ -54,7 +54,7 @@ class AddEditController extends AbstractController
             $manager->flush();
  
             // On redirige vers la route (affichage des infos de la formation)
-            return $this->redirectToRoute('showInfoSession', ['id' => $formation->getID()]);
+            return $this->redirectToRoute('showInfoSession', ['id' => $formation->getId()]);
         }
 
         // Affichage de la vue contenant le formulaire
@@ -102,8 +102,7 @@ class AddEditController extends AbstractController
      * @Route("/add/stagiaire", name="addStagiaire")
      * @Route("/edit/stagiaire/{id}", name="editStagiaire")
      */
-    public function addEditStagiaire(Stagiaire $stagiaire = null, ObjectManager $manager, Request $request)
-    {
+    public function addEditStagiaire(Stagiaire $stagiaire = null, ObjectManager $manager, Request $request) {
         if(!$stagiaire) {
             $stagiaire = new Stagiaire();
             $form = $this->createForm(StagiaireType::class, $stagiaire);
@@ -124,7 +123,7 @@ class AddEditController extends AbstractController
             $manager->persist($stagiaire);
             $manager->flush();
  
-            return $this->redirectToRoute('showInfoStagiaire', ['id' => $stagiaire->getID()]);
+            return $this->redirectToRoute('showInfoStagiaire', ['id' => $stagiaire->getId()]);
          }
 
         return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
@@ -136,8 +135,7 @@ class AddEditController extends AbstractController
      * @Route("/add/module", name="addModule")
      * @Route("/edit/module/{id}", name="editModule")
      */
-    public function addEditModule(Module $module = null, ObjectManager $manager, Request $request)
-    {
+    public function addEditModule(Module $module = null, ObjectManager $manager, Request $request) {
 
         if(!$module) {
             $module = new Module();
@@ -171,8 +169,7 @@ class AddEditController extends AbstractController
      * @Route("/add/categorie", name="addCategorie")
      * @Route("/edit/categorie/{id}", name="editCategorie")
      */
-    public function addEditCategorie(Categorie $categorie = null, ObjectManager $manager, Request $request)
-    {
+    public function addEditCategorie(Categorie $categorie = null, ObjectManager $manager, Request $request) {
         if(!$categorie) {
             $categorie = new Categorie();
           

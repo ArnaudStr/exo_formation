@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Catégories</th>
+                <th scope="col">Modules</th>
+        </thead>
+        <tbody>
+
+        {% for categorie in all_categories %}
+            <tr>
+                <td>{{ categorie }}</td> 
+                {% for module in categorie.modules %}
+                    <td>{{ module }} avec : formateur du module</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p><a href="../add/categorie"  ><button type="button" class="btn btn-primary btn-lg">Ajouter une catégorie</button></a></p>
+    <p><a href="../add/module"  ><button type="button" class="btn btn-primary btn-lg">Ajouter un module</button></a></p>
+
+
+{% endblock %}

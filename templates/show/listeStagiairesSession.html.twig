@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Sexe</th>
+                <th scope="col">Date de naissance</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Courriel</th>
+                <th scope="col">Téléphone</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for stagiaire in formation.stagiaires %}
+            <tr>
+                <th scope="col">{{ stagiaire.prenom }}</th>
+                <th scope="col">{{ stagiaire.nom }}</th>
+                <th scope="col">{{ stagiaire.sexe }}</th>
+                <th scope="col">{{ stagiaire.dateNaissance }}</th>
+                <th scope="col">{{ stagiaire.ville }}</th>
+                <th scope="col">{{ stagiaire.email }}</th>
+                <th scope="col">{{ stagiaire.telephone }}</th>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

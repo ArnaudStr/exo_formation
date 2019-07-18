@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if stagiaires is defined %}
+
+        {% set personnes = stagiaires %}        
+    
+    {% else %}
+    
+        {% set personnes = formateurs %}
+    
+    {% endif %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Sexe</th>
+                <th scope="col">Date de naissance</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Courriel</th>
+                <th scope="col">Téléphone</th>
+    
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for personne in personnes %}
+            
+            <tr>
+                <td>{{ personne.prenom }}</td>
+                <td>{{ personne.nom }}</td>
+                <td>{{ personne.sexe }}</td>
+                <td>{{ personne.dateNaissance | date("d/m/Y") }}</td>
+                <td>{{ personne.ville }}</td>
+                <td>{{ personne.email }}</td>
+                <td>{{ personne.telephone }}</td>
+                
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if stagiaires is defined %}
+
+        <p><a href="../add/stagiaire"  ><button type="button" class="btn btn-primary btn-lg">Ajouter un stagiaire</button></a></p>
+
+    {% else %}
+
+        <p><a href="../add/formateur"  ><button type="button" class="btn btn-primary btn-lg">Ajouter un formateur</button></a></p>
+
+    {% endif %}
+
+{% endblock %}

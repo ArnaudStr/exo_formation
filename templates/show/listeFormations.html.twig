@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Intitulé</th>
+                <th scope="col">Date de début</th>
+                <th scope="col">Date de fin</th>
+                <th scope="col">Nb places théorique</th>
+                <th scope="col">Nb places réservées</th>
+                <th scope="col">Nb places restantes</th>
+                <th scope="col">Détails de la formation</th>
+                <th scope="col">Liste des stagiaires</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+            {# {% set nbPlacesRestantes = formation.nbPlaces - formation.stagiaires|length %}
+                <td>{{  formation.nom  }}</td>
+                <td>{{  formation.dateDebut  }}</td>
+                <td>{{  formation.dateFin  }}</td>
+                <td>{{  formation.nbPlaces  }}</td>
+                <td>{{  formation.stagiaires|length  }}</td>
+                <td>{{  nbPlacesRestantes  }}</td> #}
+            </tr>
+        </tbody>
+    </table>
+
+    <p><a href="../add/formation"  ><button type="button" class="btn btn-primary btn-lg">Ajouter une formation</button></a></p>
+
+{% endblock %}

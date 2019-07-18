@@ -3,23 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Module;
+use App\Form\ModuleType;
 use App\Entity\Categorie;
 use App\Entity\Formateur;
 use App\Entity\Formation;
 use App\Entity\Stagiaire;
+use App\Form\CategorieType;
 use App\Form\FormateurType;
+use App\Form\FormationType;
+use App\Form\StagiaireType;
 use App\Repository\FormateurRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
-// use Doctrine\Common\Collections\ArrayCollection;
-// use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-// use Symfony\Component\Form\Extension\Core\Type\DateType;
-// use Symfony\Component\Form\Extension\Core\Type\TextType;
-// use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-// use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-// use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-// use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AddEditController extends AbstractController
@@ -140,7 +136,7 @@ class AddEditController extends AbstractController
      * @Route("/add/module", name="addModule")
      * @Route("/edit/module/{id}", name="editModule")
      */
-    public function addEditModule(Module $module, ObjectManager $manager, Request $request)
+    public function addEditModule(Module $module = null, ObjectManager $manager, Request $request)
     {
 
         if(!$module) {
@@ -153,7 +149,7 @@ class AddEditController extends AbstractController
         else {
             $form = $this->createForm(ModuleType::class, $module);
 
-            $title = 'Modification de la module '.$module;
+            $title = 'Modification du module '.$module;
          }
  
          $form->handleRequest($request);

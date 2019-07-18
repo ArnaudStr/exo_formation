@@ -115,6 +115,16 @@ class ShowController extends AbstractController
         ]);
     }
 
+    // /**
+    //  * @Route("/show/listeAllCategories", name="showListeAllCategories")
+    //  */
+    // public function showAllModules() {
+    //     $modules = $this->getDoctrine()->getRepository(Module::class)->findAll();
 
+    //     return $this->render('show/listeAllCategories.html.twig', [
+    //         'title' => 'Liste de toutes les catégories avec les différents modules',
+    //         'modules' => $modules
+    //     ]);
+    // }
 
 }

@@ -26,8 +26,7 @@ class Categorie
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Module", mappedBy="categorie", orphanRemoval=true)
-     * @ORM\Column(nullable=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Module", mappedBy="categorie")
      */
     private $modules;
 
@@ -127,4 +126,5 @@ class Categorie
     public function __toString(){
         return $this->getNom();
     }
+
 }

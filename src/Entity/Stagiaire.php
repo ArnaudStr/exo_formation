@@ -55,6 +55,7 @@ class Stagiaire
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Formation", mappedBy="stagiaires")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $formations;
 

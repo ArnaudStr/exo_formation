@@ -3,19 +3,23 @@
 {% block body %}
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th scope="col">Catégories</th>
-                <th scope="col">Modules</th>
+            {# <tr> #}
+                {# <th scope="col">Nom</th> #}
+                {# <th scope="col">Modules</th> #}
         </thead>
         <tbody>
-
-        {% for categorie in all_categories %}
+        {% for categorie in categories %}
             <tr>
-                <td>{{ categorie }}</td> 
-                {% for module in categorie.modules %}
-                    <td>{{ module }} avec : formateur du module</td>
-                {% endfor %}
+                <td><strong>{{ categorie.nom }}<strong></td> 
             </tr>
+            {% for module in categorie.modules %}
+            <tr>
+                <td>{{ module.nom }}</td> 
+                {# {% for module in categorie.modules %} #}
+                    {# <td>{{ module }} avec : formateur du module</td> #}
+                {# {% endfor %} #}
+            </tr>
+            {% endfor %}
         {% endfor %}
         </tbody>
     </table>

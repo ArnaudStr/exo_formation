@@ -205,4 +205,18 @@ class Formation
 
         return $this;
     }
+
+    public function setStagiaires(?string $stagiaires): self
+    {
+        $this->stagiaires = $stagiaires;
+
+        return $this;
+    }
+
+    public function setModules(?string $modules): self
+    {
+        $this->modules = $modules;
+
+        return $this;
+    }
 }

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <h1>{{ title }}</h1>
+
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Sexe</th>
+                <th scope="col">Date de naissance</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Courriel</th>
+                <th scope="col">Téléphone</th>
+                
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for stagiaire in stagiaires %}
+            
+            <tr>
+                <td>{{ stagiaire.prenom }}</td>
+                <td>{{ stagiaire.nom }}</td>
+                <td>{{ stagiaire.sexe }}</td>
+                <td>{{ stagiaire.dateNaissance | date("d/m/Y") }}</td>
+                <td>{{ stagiaire.ville }}</td>
+                <td>{{ stagiaire.email }}</td>
+                <td>{{ stagiaire.telephone }}</td>
+                
+            {% endfor %}  
+                
+            </tr>
+        </tbody>
+    </table>
+
+    <p><a href="../add/stagiaire"  ><button type="button" class="btn btn-primary btn-lg">Ajouter stagiaire</button></a></p>
+
+
+{% endblock %}

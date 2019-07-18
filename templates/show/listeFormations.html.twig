@@ -13,6 +13,8 @@
                 <th scope="col">Nb places restantes</th>
                 <th scope="col">Détails de la formation</th>
                 <th scope="col">Liste des stagiaires</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         
@@ -26,6 +28,10 @@
                 <td>{{  formation.nbPlaces  }}</td>
                 <td>{{  formation.stagiaires|length  }}</td>
                 <td>{{  nbPlacesRestantes  }}</td>
+                <td></td>
+                <td></td>
+                <td><a href="{{ path('editFormation',{'id':formation.id}) }}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="{{ path('deleteFormation',{'id':formation.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
         {% endfor %}
 

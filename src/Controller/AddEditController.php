@@ -12,43 +12,38 @@ use App\Form\CategorieType;
 use App\Form\FormateurType;
 use App\Form\FormationType;
 use App\Form\StagiaireType;
-use App\Repository\FormateurRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class AddEditController extends AbstractController
-{
+class AddEditController extends AbstractController {
+
     /**
      * @Route("/add/formation", name="addFormation")
      * @Route("/edit/formation/{id}", name="editFormation")
      */
-    public function addEditFormation(Formation $formation = null, ObjectManager $manager, Request $request)
-    {
+    public function addEditFormation(Formation $formation = null, ObjectManager $manager, Request $request) {
+
         // Ajout d'une formation
         if(!$formation) {
             $formation = new Formation();
-            // creation du formulaire d'ajout
-            $form = $this->createForm(FormationType::class, $formation);
-
             $title = 'Ajout d\'une formation ';
         }
  
         // Modification d'une formation
         else {
-            // creation du formulaire de modification
-            $form = $this->createForm(FormationType::class, $formation);
-
-            $title = 'Modification d\'une formation ';
-         }
+            $title = 'Modification dd la formation '.$formation;
+        }
  
-        // Va controler les données entrées dans le formulaire
+        // creation du formulaire (ajout ou modification)
+        $form = $this->createForm(FormationType::class, $formation);
+
+        // Pour le contrôle des données entrées dans le formulaire
         $form->handleRequest($request);
                
-        // Validation du formulaire (Ajout ou modification)
+        // Validation du formulaire
         if($form->isSubmitted() && $form->isValid()) {
-                 
             // On ajoute la formation en BDD
             $manager->persist($formation);
             $manager->flush();
@@ -64,38 +59,58 @@ class AddEditController extends AbstractController
     }
 
     /**
+     * @Route("/delete/formation/{id}", name="deleteFormation")
+     */
+    public function deleteFormation(Formation $formation, ObjectManager $manager) {
+
+        $manager->remove($formation);
+        $manager->flush();
+  
+        return $this->redirectToRoute('showListeFormations');
+    }
+
+    /**
      * @Route("/add/formateur", name="addFormateur")
      * @Route("/edit/formateur/{id}", name="editFormateur")
      */
-    public function addEditFormateur(Formateur $formateur = null, ObjectManager $manager, Request $request)
-    {
+    public function addEditFormateur(Formateur $formateur = null, ObjectManager $manager, Request $request) {
+        
         if(!$formateur) {
             $formateur = new Formateur();
-            $form = $this->createForm(FormateurType::class, $formateur);
-
-            $title = 'Ajout d\'un formateur ';
+            $title = 'Ajout d\'un formateur';
         }
  
         else {
-            // form edit
-
             $title = 'Modification du formateur '.$formateur;
-         }
+        }
+
+        $form = $this->createForm(FormateurType::class, $formateur);
  
-         $form->handleRequest($request);
+        $form->handleRequest($request);
                
-         if($form->isSubmitted() && $form->isValid()) {
-                
+        if($form->isSubmitted() && $form->isValid()) {
             $manager->persist($formateur);
             $manager->flush();
  
             return $this->redirectToRoute('showInfoFormateur', ['id' => $formateur->getID()]);
-         }
+        }
 
         return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $formateur->getId() != null, 'formateur' => $formateur,
         ]);
     }
+
+    /**
+     * @Route("/delete/formateur/{id}", name="deleteFormateur")
+     */
+    public function deleteFormateur(Formateur $formateur, ObjectManager $manager) {
+
+        $manager->remove($formateur);
+        $manager->flush();
+  
+        return $this->redirectToRoute('showListeFormateurs');
+    }
+
 
 
     /**
@@ -103,28 +118,26 @@ class AddEditController extends AbstractController
      * @Route("/edit/stagiaire/{id}", name="editStagiaire")
      */
     public function addEditStagiaire(Stagiaire $stagiaire = null, ObjectManager $manager, Request $request) {
+       
         if(!$stagiaire) {
             $stagiaire = new Stagiaire();
-            $form = $this->createForm(StagiaireType::class, $stagiaire);
-
             $title = "Ajout d'un stagiaire";
         }
  
         else {
-            $form = $this->createForm(StagiaireType::class, $stagiaire);
-
             $title = 'Modification du stagiaire '.$stagiaire;
          }
- 
-         $form->handleRequest($request);
-               
-         if($form->isSubmitted() && $form->isValid()) {
 
+        $form = $this->createForm(StagiaireType::class, $stagiaire);
+
+        $form->handleRequest($request);
+               
+        if($form->isSubmitted() && $form->isValid()) {
             $manager->persist($stagiaire);
             $manager->flush();
  
             return $this->redirectToRoute('showInfoStagiaire', ['id' => $stagiaire->getId()]);
-         }
+        }
 
         return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $stagiaire->getId() != null, 'stagiaire' => $stagiaire,
@@ -140,7 +153,6 @@ class AddEditController extends AbstractController
         $manager->flush();
   
         return $this->redirectToRoute('showListeStagiaires');
-  
     }
 
     /**
@@ -151,31 +163,40 @@ class AddEditController extends AbstractController
 
         if(!$module) {
             $module = new Module();
-            $form = $this->createForm(ModuleType::class, $module);
-
             $title = "Ajout d'une module";
         }
  
         else {
-            $form = $this->createForm(ModuleType::class, $module);
-
             $title = 'Modification du module '.$module;
-         }
+        }
+
+        $form = $this->createForm(ModuleType::class, $module);
  
-         $form->handleRequest($request);
+        $form->handleRequest($request);
                
-         if($form->isSubmitted() && $form->isValid()) {
-        
+        if($form->isSubmitted() && $form->isValid()) {
             $manager->persist($module);
             $manager->flush();
  
-            return $this->redirectToRoute('showListeAllCategories');
-         }
+            return $this->redirectToRoute('showListeModules');
+        }
 
          return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $module->getId() != null, 'module' => $module
      ]);
     }
+
+    /**
+     * @Route("/delete/module/{id}", name="deleteModule")
+     */
+    public function deleteModule(Module $module, ObjectManager $manager) {
+
+        $manager->remove($module);
+        $manager->flush();
+  
+        return $this->redirectToRoute('showListeModules');
+    }
+
 
     /**
      * @Route("/add/categorie", name="addCategorie")
@@ -184,30 +205,38 @@ class AddEditController extends AbstractController
     public function addEditCategorie(Categorie $categorie = null, ObjectManager $manager, Request $request) {
         if(!$categorie) {
             $categorie = new Categorie();
-          
-            $form = $this->createForm(CategorieType::class, $categorie);
-
             $title = "Ajout d'une categorie";
         }
  
         else {
-            $form = $this->createForm(CategorieType::class, $categorie);
-
             $title = 'Modification de la categorie '.$categorie;
-         }
+        }
  
-         $form->handleRequest($request);
+        $form = $this->createForm(CategorieType::class, $categorie);
+        
+        $form->handleRequest($request);
                
-         if($form->isSubmitted() && $form->isValid()) {
-            
+        if($form->isSubmitted() && $form->isValid()) {
             $manager->persist($categorie);
             $manager->flush();
  
-            return $this->redirectToRoute('showListeAllCategories');
-         }
+            return $this->redirectToRoute('showListeModules');
+        }
 
         return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $categorie->getId() != null, 'categorie' => $categorie
         ]);
     }
+
+    /**
+     * @Route("/delete/categorie/{id}", name="deleteCategorie")
+     */
+    public function deleteCategorie(Categorie $categorie, ObjectManager $manager) {
+
+        $manager->remove($categorie);
+        $manager->flush();
+  
+        return $this->redirectToRoute('showListeCategories');
+    }
+
 }

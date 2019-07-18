@@ -12,6 +12,8 @@
                 <th scope="col">Ville</th>
                 <th scope="col">Courriel</th>
                 <th scope="col">Téléphone</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         
@@ -25,6 +27,8 @@
                 <th scope="col">{{ stagiaire.ville }}</th>
                 <th scope="col">{{ stagiaire.email }}</th>
                 <th scope="col">{{ stagiaire.telephone }}</th>
+                <td><a href="{{ path('editStagiaire',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="{{ path('deleteStagiaire',{'id':personne.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             {% endfor %}
 

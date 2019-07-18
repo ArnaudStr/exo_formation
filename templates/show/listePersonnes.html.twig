@@ -41,14 +41,13 @@
                 <td>{{ personne.telephone }}</td>
                 {% if stagiaires is defined %}
 
-                    <td><a href=""><i class="fas fa-edit"></i></a></td>
+                    <td><a href="{{ path('editStagiaire',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td>
                     <td><a href="{{ path('deleteStagiaire',{'id':personne.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
-
 
                 {% else %}
 
-                    {# <td><a href="{{ path('deleteFormateur',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td> #}
-                    <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
+                    <td><a href="{{ path('editFormateur',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="{{ path('deleteFormateur',{'id':personne.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
 
                 {% endif %}
 

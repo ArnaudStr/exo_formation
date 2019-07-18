@@ -12,8 +12,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ShowController extends AbstractController
-{
+class ShowController extends AbstractController {
+
     /**
      * @Route("/", name="showListeFormations")
      */
@@ -39,20 +39,15 @@ class ShowController extends AbstractController
         ]);
     }
 
-
-
-    // TODO : Factoriser listesStagiaires d'une formation et la listes de tous les stagiaire
-
     /**
      * @Route("/show/listeStagiaires", name="showListeStagiaires")
      */
-    public function showListeStagiaires(){
-
+    public function showListeStagiaires() {
 
         $all_stagiaires = $this->getDoctrine()->getRepository(Stagiaire::class)->findAll();
 
         return $this->render("show/listePersonnes.html.twig", [
-            'title' => 'Tous les stagiaires',
+            'title' => 'Liste des stagiaires',
             'stagiaires' => $all_stagiaires
         ]);
     }
@@ -60,8 +55,8 @@ class ShowController extends AbstractController
     /**
      * @Route("/show/listeStagiairesSession/{id}", name="showListeStagiairesSession")
      */
-    public function showListeStagiairesSession(Formation $formation, ObjectManager $manager, Request $request)
-    {
+    public function showListeStagiairesSession(Formation $formation, ObjectManager $manager, Request $request) {
+        
         return $this->render('show/listeStagiairesSession.html.twig', [
             'title' => 'Liste des stagiaires de la formation '.$formation,
             'formation' => $formation
@@ -83,11 +78,12 @@ class ShowController extends AbstractController
     /**
      * @Route("/show/listeFormateurs", name="showListeFormateurs")
      */
-    public function showListeFormateurs(){
+    public function showListeFormateurs() {
+
         $all_formateurs = $this->getDoctrine()->getRepository(Formateur::class)->findAll();
 
         return $this->render("show/listePersonnes.html.twig", [
-            'title' => 'Nos formateurs',
+            'title' => 'Liste des formateurs',
             'formateurs' => $all_formateurs
         ]);
     }
@@ -104,27 +100,15 @@ class ShowController extends AbstractController
     }
 
     /**
-     * @Route("/show/listeAllCategories", name="showListeAllCategories")
+     * @Route("/show/listeModules", name="showListeModules")
      */
-    public function showListeAllCategories() {
+    public function showListeModules() {
         $all_categories = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
 
-        return $this->render('show/listeAllCategories.html.twig', [
-            'title' => 'Liste de toutes les catégories avec les différents modules',
+        return $this->render('show/listeModules.html.twig', [
+            'title' => 'Liste de tous les modules',
             'categories' => $all_categories
         ]);
     }
-
-    // /**
-    //  * @Route("/show/listeAllCategories", name="showListeAllCategories")
-    //  */
-    // public function showAllModules() {
-    //     $modules = $this->getDoctrine()->getRepository(Module::class)->findAll();
-
-    //     return $this->render('show/listeAllCategories.html.twig', [
-    //         'title' => 'Liste de toutes les catégories avec les différents modules',
-    //         'modules' => $modules
-    //     ]);
-    // }
 
 }

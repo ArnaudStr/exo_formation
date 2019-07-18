@@ -15,48 +15,57 @@
     </head>
     
     <body>
-        
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            {# <a class="navbar-brand" href="#">Navbar</a> #}
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        {# On affiche le site uniquement si on est connecté #}
+        {% if is_granted('ROLE_USER') or login is defined %}
+            
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                {# <a class="navbar-brand" href="#">Navbar</a> #}
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Formations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/show/listeAllCategories">Catégories et modules</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/show/listeFormateurs">Formateurs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/show/listeStagiaires">Stagiaires</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Connection</a>
-                    </li>
-                    {% if is_granted('ROLE_ADMIN') %}
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/register">Ajouter quelqu'un</a>
+                            <a class="nav-link" href="/">Formations</a>
                         </li>
-                    {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/show/listeModules">Catégories et modules</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/show/listeFormateurs">Formateurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/show/listeStagiaires">Stagiaires</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Connection</a>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register">Ajouter quelqu'un</a>
+                            </li>
+                        {% endif %}
 
-                </ul>
-            </div>
-        </nav>
-        
-        {# Titres des différentes pages #}
-        {# {% if title %} #}
-                <h1>{{ title }}</h1> 
-        {# {% endif %} #}
-        
+                    </ul>
+                </div>
+            </nav>
+            
+            {# Titres des différentes pages #}
+            <h1>{{ title }}</h1>         
 
-        {% block body %}
-        {% endblock %}
-        {% block javascripts %}{% endblock %}
+            {% block body %}
+            {% endblock %}
+            {% block javascripts %}{% endblock %}
+
+        {# Connection #}
+        {% else %}
+
+        <h1>Veuillez vous connecter<h1>
+        <p><a href="/login"><button type="button" class="btn btn-primary btn-lg">Connection</button></a></p>
+
+
+        {% endif %}
     </body>
+
 </html>

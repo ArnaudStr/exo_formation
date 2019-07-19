@@ -18,6 +18,7 @@ class ModuleType extends AbstractType
 
         $builder
             ->add('nom',TextType::class)
+            // Collection type
             ->add("categorie", EntityType::class, [
                 "class"=>Categorie::class, 
                 "choice_label" => 'nom'

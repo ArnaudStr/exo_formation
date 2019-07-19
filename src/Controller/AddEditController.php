@@ -29,7 +29,12 @@ class AddEditController extends AbstractController {
         if(!$formation) {
             $formation = new Formation();
             $title = 'Ajout d\'une formation ';
+            $module1 = new Module();
+            $module1->setNom('Module1');
+            $module2 = new Module();
+            $module2->setNom('Module2');
         }
+
  
         // Modification d'une formation
         else {
@@ -133,15 +138,22 @@ class AddEditController extends AbstractController {
         $form->handleRequest($request);
                
         if($form->isSubmitted() && $form->isValid()) {
+
+            $formateurs = $form->get('formations')->getData();
+
             $manager->persist($stagiaire);
             $manager->flush();
  
             return $this->redirectToRoute('showInfoStagiaire', ['id' => $stagiaire->getId()]);
         }
 
-        return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
+        return $this->render('add_edit/addStagiaire.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $stagiaire->getId() != null, 'stagiaire' => $stagiaire,
         ]);
+
+        // return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
+        //     'title' => $title, 'editMode' => $stagiaire->getId() != null, 'stagiaire' => $stagiaire,
+        // ]);
     }
 
     /**

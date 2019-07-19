@@ -28,8 +28,7 @@ class FormateurType extends AbstractType
             ->add('ville',TextType::class, ["required" => false])
             ->add('email',TextType::class)
             ->add('telephone',TextType::class)
-
-            // catégories
+            // Collection type
             ->add("categories", EntityType::class, [
                 "class"=>Categorie::class, 
                 "choice_label" => 'nom'

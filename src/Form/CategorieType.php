@@ -21,15 +21,13 @@ class CategorieType extends AbstractType
         $builder
             ->add('nom',TextType::class)
 
+            // TODO : CollectionType pour ajout de formateurs / modules
             ->add("formateurs", EntityType::class, [
                 "class" => Formateur::class, 
-                "query_builder" => function(EntityRepository $er){
-                    return $er->createQueryBuilder("f")->orderBy("f.nom", "ASC");
-                }, 
                 "choice_label"=> "nom",
                 "required" => false
             ])
-
+            // Collection type
             ->add("modules", EntityType::class, [
                 "mapped" => false,
                 "class" => Module::class, 

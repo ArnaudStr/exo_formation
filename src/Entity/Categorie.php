@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Module;
 use App\Entity\Formateur;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;

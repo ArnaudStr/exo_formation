@@ -1,0 +1,27 @@
+{% extends 'topic/base.html.twig' %}
+
+{% block content %}
+
+    {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.sexe) }}
+        {{ form_row(form.dateNaissance) }}
+        {{ form_row(form.ville) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.telephone) }}
+        <input type='hiden' id="maxNb" value ='15' >
+        <ul id="formations" data-prototype={{ form_row(form.formations.vars.prototype)|e('html_attr') }}>
+        {% for formation in form.formations %}
+            <li> {{ form_row(formation) }}</li>
+        {% endfor %}
+        </ul>
+        {{ form_row(form.submit) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src ="/js/collectionHandler.js"></script>
+{% endblock %}

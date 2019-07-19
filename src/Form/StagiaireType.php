@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class StagiaireType extends AbstractType
 {
@@ -30,11 +31,23 @@ class StagiaireType extends AbstractType
             ->add('ville',TextType::class, ["required" => false])
             ->add('email',TextType::class)
             ->add('telephone',TextType::class)
-            ->add("formations", EntityType::class, [
-                "class" => Formation::class,
-                "choice_label" => "nom",
-                "required" => false                
-            ])
+            // Collection type
+            // ->add("formations", EntityType::class, [
+            //     "class" => Formation::class,
+            //     "choice_label" => "nom",
+            //     "required" => false                
+            // ])
+            ->add("formations", CollectionType::class, [
+                // "mapped" => false
+                // "class" => Stagiaire::class, 
+                "entry_type" => Formation::class, 
+                'entry_options' => [
+                    'label' => false,
+                ],
+                'allow_add' => true,
+                'allow_delete' => true,
+                "required" => false
+            ])  
             ->add('Valider', SubmitType::class)
         ;
     }

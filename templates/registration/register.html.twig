@@ -5,10 +5,12 @@
 {% block body %}
 
     {{ form_start(registrationForm) }}
+
         {{ form_row(registrationForm.username) }}
         {{ form_row(registrationForm.plainPassword) }}
 
-        <button class="btn">Register</button>
+        <button class="btn btn-warning btn-lg">Enregistrement</button>
+
     {{ form_end(registrationForm) }}
     
 {% endblock %}

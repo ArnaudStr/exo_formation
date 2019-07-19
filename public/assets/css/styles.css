@@ -1,5 +1,16 @@
 h1{
-    color:red;
+    color:chocolate;
     text-align: center;
 }
+
+a{
+    text-decoration: none;
+    color: chocolate;
+}
+
+th, td{
+    color: chocolate;
+}
+
+
 

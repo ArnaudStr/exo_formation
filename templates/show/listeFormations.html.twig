@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <table class="table table-striped">
+    <table class="table table-striped table-warning">
         <thead>
             <tr>
                 <th scope="col">Intitulé</th>
@@ -23,8 +23,8 @@
             {% set nbPlacesRestantes = formation.nbPlaces - formation.stagiaires|length %}
             <tr>
                 <td>{{  formation.nom  }}</td>
-                <td>{{  formation.dateDebut|date("Y-m-d")  }}</td>
-                <td>{{  formation.dateFin|date("Y-m-d")  }}</td>
+                <td>{{  formation.dateDebut|date("d/m/Y")  }}</td>
+                <td>{{  formation.dateFin|date("d/m/Y")  }}</td>
                 <td>{{  formation.nbPlaces  }}</td>
                 <td>{{  formation.stagiaires|length  }}</td>
                 <td>{{  nbPlacesRestantes  }}</td>
@@ -38,6 +38,6 @@
         </tbody>
     </table>
 
-    <p><a href="../add/formation"  ><button type="button" class="btn btn-primary btn-lg">Ajouter une formation</button></a></p>
+    <p><a href="../add/formation"  ><button type="button" class="btn btn-warning btn-lg">Ajouter une formation</button></a></p>
 
 {% endblock %}

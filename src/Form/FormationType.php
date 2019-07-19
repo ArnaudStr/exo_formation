@@ -54,7 +54,7 @@ class FormationType extends AbstractType
             ->add("stagiaires", CollectionType::class, [
                 // "mapped" => false
                 // "class" => Stagiaire::class, 
-                "entry_type" => Stagiaire::class, 
+                "entry_type" => StagiaireType::class, 
                 'entry_options' => [
                     'label' => 'Stagiaire',
                 ],

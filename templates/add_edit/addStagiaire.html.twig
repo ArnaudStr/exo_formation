@@ -1,6 +1,6 @@
-{% extends 'topic/base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block content %}
+{% block body %}
 
     {{ form_start(form) }}
         {{ form_row(form.nom) }}
@@ -16,7 +16,7 @@
             <li> {{ form_row(formation) }}</li>
         {% endfor %}
         </ul>
-        {{ form_row(form.submit) }}
+        {{ form_row(form.Valider) }}
     {{ form_end(form) }}
 
 {% endblock %}

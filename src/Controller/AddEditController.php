@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\StagiaireType;
 use App\Entity\Module;
 use App\Form\ModuleType;
 use App\Entity\Categorie;
@@ -11,7 +12,7 @@ use App\Entity\Stagiaire;
 use App\Form\CategorieType;
 use App\Form\FormateurType;
 use App\Form\FormationType;
-use App\Form\StagiaireType;
+
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -133,7 +134,7 @@ class AddEditController extends AbstractController {
             $title = 'Modification du stagiaire '.$stagiaire;
          }
 
-        $form = $this->createForm(StagiaireType::class, $stagiaire);
+        $form = $this->createForm('App\Form\StagiaireType', $stagiaire);
 
         $form->handleRequest($request);
                

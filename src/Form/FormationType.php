@@ -17,9 +17,22 @@ class FormationType extends AbstractType
     {
         $builder
             ->add('nom',TextType::class)
-            ->add('date_debut',DateType::class)
-            ->add('dateFin', DateType::class)
-            ->add("nbPlaces", IntegerType::class)
+            ->add('date_debut',DateType::class, [
+                "years"=>range(date("Y"), date("Y")+10),
+                "label"=>"Date de naissance",
+                "format"=>"ddMMMMyyyy"
+            ])
+            ->add('dateFin', DateType::class, [
+                "years"=>range(date("Y"), date("Y")+10),
+                "label"=>"Date de naissance",
+                "format"=>"ddMMMMyyyy"
+            ])
+            ->add("nbPlaces", IntegerType::class, [
+                'attr' => [
+                    "min" => 1,
+                    "max" => 100,
+                    "label" => "Nombre de places" ]
+            ])
             // ->add("modules",  )
             ->add('Valider', SubmitType::class)
         ;

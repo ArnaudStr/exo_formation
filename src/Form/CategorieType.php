@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Module;
 use App\Form\ModuleType;
 use App\Entity\Categorie;
 use App\Entity\Formateur;
@@ -15,31 +16,36 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CategorieType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
+
         $builder
             ->add('nom',TextType::class)
-            // ->add("formateurs", EntityType::class, [
-            //     "class"=>Formateur::class, 
-            //     "query_builder"=> function(EntityRepository $er){
-            //         return $er->createQueryBuilder("f")->orderBy("f.nom", "ASC");
-            //     }, 
-            //     "choice_label"=> "nom"
-            // ])
-            // ->add("modules", EntityType::class, [
-            //     "class"=>ModuleType::class, 
-            //     "query_builder"=> function(EntityRepository $er){
-            //         return $er->createQueryBuilder("m")->orderBy("m.nom", "ASC");
-            //     }, 
-            //     "choice_label"=> "nom"
-                
-            // ])
+
+            ->add("formateurs", EntityType::class, [
+                "class" => Formateur::class, 
+                "query_builder" => function(EntityRepository $er){
+                    return $er->createQueryBuilder("f")->orderBy("f.nom", "ASC");
+                }, 
+                "choice_label"=> "nom",
+                "required" => false
+            ])
+
+            ->add("modules", EntityType::class, [
+                "mapped" => false,
+                "class" => Module::class, 
+                "query_builder" => function(EntityRepository $er){
+                    return $er->createQueryBuilder("m")->orderBy("m.nom", "ASC");
+                }, 
+                "choice_label" => "nom",
+                "required" => false                
+            ])
+
             ->add('Valider', SubmitType::class)
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
+
         $resolver->setDefaults([
             'data_class' => Categorie::class,
         ]);

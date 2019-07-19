@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Categorie;
 use App\Entity\Formateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,25 +15,32 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class FormateurType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
+
         $builder
             ->add('nom',TextType::class)
             ->add('prenom',TextType::class)
             ->add('sexe',ChoiceType::class, ["choices"=>["Homme"=>"H", "Femme"=>"F"], "expanded"=>true])
             ->add('dateNaissance',DateType::class, [                
-                'years' => range(date('Y'),date('Y')-77),
+                'years' => range(date('Y')-7,date('Y')-77),
                 'label' => 'Date de naissance' ,
                 'format' => 'ddMMMMyyyy' ])
-            ->add('ville',TextType::class)
+            ->add('ville',TextType::class, ["required" => false])
             ->add('email',TextType::class)
             ->add('telephone',TextType::class)
+
+            // catégories
+            ->add("categories", EntityType::class, [
+                "class"=>Categorie::class, 
+                "choice_label" => 'nom'
+            ])
+
             ->add('Valider', SubmitType::class)
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
+        
         $resolver->setDefaults([
             'data_class' => Formateur::class,
         ]);

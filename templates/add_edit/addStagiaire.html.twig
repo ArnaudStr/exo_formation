@@ -10,18 +10,18 @@
         {{ form_row(form.ville) }}
         {{ form_row(form.email) }}
         {{ form_row(form.telephone) }}
-        <input type='hiden' id="maxNb" value ='15' >
-        <ul id="formations" data-prototype={{ form_row(form.formations.vars.prototype)|e('html_attr') }}>
-        {% for formation in form.formations %}
+        <!-- <input type='hiden' id="maxNb" value ='15' >
+        {# <ul id="formations" data-prototype={{ form_row(form.formations.vars.prototype)|e('html_attr') }}>
+         {% for formation in form.formations %}
             <li> {{ form_row(formation) }}</li>
-        {% endfor %}
-        </ul>
+        {% endfor %} #}
+        </ul> -->
         {{ form_row(form.Valider) }}
     {{ form_end(form) }}
 
 {% endblock %}
 
-{% block javascripts %}
+{# {% block javascripts %}
     {{ parent() }}
     <script src ="/js/collectionHandler.js"></script>
-{% endblock %}
+{% endblock %} #}

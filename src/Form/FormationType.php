@@ -21,7 +21,7 @@ class FormationType extends AbstractType
     {
         $builder
             ->add('nom',TextType::class)
-            ->add('date_debut',DateType::class, [
+            ->add('dateDebut',DateType::class, [
                 "years"=>range(date("Y"), date("Y")+10),
                 "label"=>"Date de début",
                 "format"=>"ddMMMMyyyy"
@@ -37,40 +37,16 @@ class FormationType extends AbstractType
                     "max" => 100,
                     "label" => "Nombre de places" ]
             ])
-            // Collection type
-            // ->add("modules", EntityType::class, [
-            //     "class" => Module::class, 
-            //     "choice_label"=> "nom",
-            //     "required" => false
-            // ])
-
-            // ->add("modules", CollectionType::class, [
-            //     "entry_type" => Module::class, 
-            //     'entry_options' => ['label' => false],
-            //     "required" => false
-            // ])
 
             // Collection type
-            ->add("stagiaires", CollectionType::class, [
-                // "mapped" => false
-                // "class" => Stagiaire::class, 
-                "entry_type" => StagiaireType::class, 
-                'entry_options' => [
-                    'label' => 'Stagiaire',
-                ],
+            ->add('stagiaires', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => ['label' => "Choisir stagiaire :", "class" => Stagiaire::class,],
                 'allow_add' => true,
-                'allow_delete' => true,
-                "required" => false
-            ])  
+                'allow_delete' => true
+            ])
 
-            // ->add("stagiaires", CollectionType::class, [
-            //     "entry_type" => Module::class, 
-            //     'entry_options' => ['label' => false],
-            //     'allow_add' => true,
-            //     "required" => false
-            // ])
-
-            ->add('Valider', SubmitType::class)
+            ->add('submit', SubmitType::class)
         ;
     }
 

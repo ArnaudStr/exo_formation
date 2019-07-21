@@ -30,10 +30,6 @@ class AddEditController extends AbstractController {
         if(!$formation) {
             $formation = new Formation();
             $title = 'Ajout d\'une formation ';
-            $module1 = new Module();
-            $module1->setNom('Module1');
-            $module2 = new Module();
-            $module2->setNom('Module2');
         }
 
  
@@ -59,7 +55,7 @@ class AddEditController extends AbstractController {
         }
 
         // Affichage de la vue contenant le formulaire
-        return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
+        return $this->render('add_edit/addFormation.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $formation->getId() != null, 'formation' => $formation
         ]);
     }
@@ -140,7 +136,7 @@ class AddEditController extends AbstractController {
                
         if($form->isSubmitted() && $form->isValid()) {
 
-            $formateurs = $form->get('formations')->getData();
+            // $formations = $form->get('formations')->getData();
 
             $manager->persist($stagiaire);
             $manager->flush();

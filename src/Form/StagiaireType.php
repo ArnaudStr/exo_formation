@@ -37,19 +37,15 @@ class StagiaireType extends AbstractType
         //     "choice_label" => "nom",
         //     "required" => false                
         // ])
-        ->add('formations', CollectionType::class, [
-            // "mapped" => false,
-            // "class" => Stagiaire::class, 
-            'entry_type' => FormationType::class, 
-            'entry_options' => [
-                // 'class' => Formation::class,
-                'label' => false,
-            ],
-            'allow_add' => true,
-            'allow_delete' => true,
-            "required" => false,
-            'by_reference' => false,
-        ])  
+        // ->add('formations', CollectionType::class, [
+        //     'entry_type' => Formation::class, 
+        //     'entry_options' => [
+        //         'label' => false,
+        //     ],
+        //     "required" => false,
+        //     // "choice_label" => "nom",
+
+        // ])  
         ->add('Valider', SubmitType::class)
     ;
     }

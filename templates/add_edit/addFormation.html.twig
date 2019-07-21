@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   {{ form_start(form) }}
+
+   <input type='hidden' id="maxNb" value ='15' >
+
+        {{form_row(form.nom) }} 
+        {{form_row(form.nbPlaces) }}
+        {{form_row(form.dateDebut) }}
+        {{form_row(form.dateFin) }}
+
+
+     <ul id="collections" data-prototype= "{{ form_row(form.stagiaires.vars.prototype)|e('html_attr') }}">
+            <!-- <input type='hidden' id="maxNb" value ='15' > -->
+
+        {% for stagiaire in form.stagiaires %}
+            <li>
+
+                {{ form_row(stagiaire) }}</li>
+        {% endfor %}
+    </ul>
+      {{form_row(form.submit) }} 
+{{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent()}}
+    <script src="/js/collectionHandler.js"></script>
+{% endblock %}

@@ -15,5 +15,16 @@ th, td{
 .decernediplome{
     font-style: oblique;
     color: darkgoldenrod;
+    text-align: center;
 }
+
+#formationdiplome{
+    color: darkgoldenrod;
+    text-align: center;
+}
+
+.boutonpdf{
+    text-align: right;
+}
+
 

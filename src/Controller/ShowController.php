@@ -112,15 +112,16 @@ class ShowController extends AbstractController {
         ]);
     }
 
-    /**
-     * @Route("/show/diplome/{id}", name="showDiplome")
-     */
-    public function showDiplome(ObjectManager $manager, Request $request, Formation $formation, Stagiaire $stagiaire){
+    // /**
+    //  * @Route("/show/diplome/{id}/formation/{id_formation}", name="showDiplome")
+    //  */
+    // public function showDiplome(ObjectManager $manager, Request $request, Stagiaire $stagiaire, Formation $formation ){
 
 
-        return $this->render("show/diplome.html.twig", [
-            "formation"=> $formation
-        ]);
-    }
+    //     return $this->render("show/diplome.html.twig", [
+    //         "stagiaire"=> $stagiaire,
+    //         "formation"=> $formation
+    //     ]);
+    // }
 
 }

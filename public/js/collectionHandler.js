@@ -1,4 +1,5 @@
-//création de 3 éléments HTMLElement    
+//création de 3 éléments HTMLElement
+var test = $    
 var $addCollectionButton = $('<button type="button" class="add_collection_link">Ajouter un stagiaire</button>');
 var $delCollectionButton = $('<button type="button" class="del_collection_link">Supprimer</button>');
 //le premier élément li de la liste (celui qui contient le bouton 'ajouter')
@@ -13,6 +14,7 @@ function generateDeleteButton($collection){
     })
     return $btn;
 }
+
 //fonction qui ajoute un nouveau champ li (en fonction de l'entry_type du collectionType) dans la collection
 function addCollectionForm($collection, $newLinkLi) {
     
@@ -31,18 +33,15 @@ function addCollectionForm($collection, $newLinkLi) {
     $newLinkLi.before($newFormLi);
 }
 
-// TODO : SERIALIZE(?)
-
 //rendu de la collection au chargement de la page
 $(document).ready(function() {
-    // var test = $("form").serialize();
-    var $nbPlaces = $('input#formation_nbPlaces').val();
-    console.log($nbPlaces)
+
+    // var $nbPlaces = $('input#formation_nbPlaces').val();
+    // console.log($nbPlaces)
     //on pointe la liste complete (le conteneur de la collection)
-    var $collection = $("ul#collections")
+    var $collection = $("ul.collections")
     //on y ajoute le bouton ajouter (à la fin du contenu)
     $collection.append($newLinkLi);
-    // $($collection).serialize();
 
     //pour chaque li déjà présente dans la collection (dans le cas d'une modification)
     $(".collection").each(function(){
@@ -52,21 +51,20 @@ $(document).ready(function() {
     //le data index de la collection est égal au nombre de input à l'intérieur
     $collection.data('index', $collection.find(':input').length);
 
-    $addCollectionButton.on('click', function(e) { // au clic sur le bouton ajouter
-        var nbPlaces = $('input#formation_nbPlaces').val();
-        // $($collection).serialize();
+    $addCollectionButton.on('click', function() { // au clic sur le bouton ajouter
+        // var nbPlaces = $('input#formation_nbPlaces').val();
         //si la collection n'a pas encore autant d'élément que le maximum autorisé
-        if(nbPlaces != ""){
+        // if(nbPlaces != ""){
             // if($collection.data('index') <= $("input#maxNb").val()){
-            if($collection.data('index') <= nbPlaces){
+            // if($collection.data('index') <= nbPlaces || !nbPlaces){
                 
-                console.log(nbPlaces)
+                // console.log($nbPlaces)
 
                 //on appelle la fonction qui ajoute un nouveau champ
                 addCollectionForm($collection, $newLinkLi);
-            }
-            else alert("Nb max atteint !")
-        }
+        //     }
+        //     else alert("Nb max atteint !")
+        // }
         
     });
 

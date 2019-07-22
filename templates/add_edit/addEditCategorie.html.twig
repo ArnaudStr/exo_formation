@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   {{ form_start(form) }}
+
+
+    {{form_row(form.nom) }} 
+
+    <input type='hidden' id="maxNb" value ='20'>
+
+    {# <ul class="collections" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
+
+        {% for module in form.modules %}
+            <li>
+                {{ form_row(module) }}
+            </li>
+        {% endfor %}
+
+    </ul> #}
+
+    <ul class="collections" data-prototype= "{{ form_row(form.formateurs.vars.prototype)|e('html_attr') }}">
+
+        {% for formateur in form.formateurs %}
+            <li>
+                {{ form_row(formateur) }}
+            </li>
+        {% endfor %}
+
+    </ul>
+
+      {{form_row(form.submit) }} 
+{{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent()}}
+    <script src="/js/collectionHandler.js"></script>
+{% endblock %}

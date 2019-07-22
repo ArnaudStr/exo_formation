@@ -55,7 +55,7 @@ class AddEditController extends AbstractController {
         }
 
         // Affichage de la vue contenant le formulaire
-        return $this->render('add_edit/addFormation.html.twig', ['form' => $form->createView(),
+        return $this->render('add_edit/addEditFormation.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $formation->getId() != null, 'formation' => $formation
         ]);
     }
@@ -97,7 +97,7 @@ class AddEditController extends AbstractController {
             return $this->redirectToRoute('showInfoFormateur', ['id' => $formateur->getID()]);
         }
 
-        return $this->render('add_edit/addFormateur.html.twig', ['form' => $form->createView(),
+        return $this->render('add_edit/addEditFormateur.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $formateur->getId() != null, 'formateur' => $formateur,
         ]);
     }
@@ -144,7 +144,7 @@ class AddEditController extends AbstractController {
             return $this->redirectToRoute('showInfoStagiaire', ['id' => $stagiaire->getId()]);
         }
 
-        return $this->render('add_edit/addStagiaire.html.twig', ['form' => $form->createView(),
+        return $this->render('add_edit/addEditStagiaire.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $stagiaire->getId() != null, 'stagiaire' => $stagiaire,
         ]);
 
@@ -190,7 +190,7 @@ class AddEditController extends AbstractController {
             return $this->redirectToRoute('showListeModules');
         }
 
-         return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
+         return $this->render('add_edit/addEditModule.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $module->getId() != null, 'module' => $module
      ]);
     }
@@ -232,7 +232,7 @@ class AddEditController extends AbstractController {
             return $this->redirectToRoute('showListeModules');
         }
 
-        return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
+        return $this->render('add_edit/addEditCategorie.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $categorie->getId() != null, 'categorie' => $categorie
         ]);
     }

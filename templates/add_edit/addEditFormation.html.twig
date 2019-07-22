@@ -11,20 +11,21 @@
 
     {# <input type='hidden' id="maxNb" value = {{  }}> #}
 
-    {# <ul class="collections" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
+    <ul class="collections" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
 
         {% for module in form.modules %}
             <li>
                 {{ form_row(module) }}
             </li>
             <li>
-                Durée (en jours) : 
+                {{ form_row(form.duree) }}
             </li>
+
         {% endfor %}
 
-    </ul> #}
+    </ul>
 
-    {% if editMode %}
+    {# {% if editMode %}
         <ul class="collections" data-prototype= "{{ form_row(form.stagiaires.vars.prototype)|e('html_attr') }}">
 
             {% for stagiaire in form.stagiaires %}
@@ -34,7 +35,7 @@
             {% endfor %}
 
         </ul>
-    {% endif %}
+    {% endif %} #}
     
 
       {{form_row(form.submit) }} 

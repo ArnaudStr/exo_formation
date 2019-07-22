@@ -1,6 +1,6 @@
 //création de 3 éléments HTMLElement
 var test = $    
-var $addCollectionButton = $('<button type="button" class="add_collection_link">Ajouter un stagiaire</button>');
+var $addCollectionButton = $('<button type="button" class="add_collection_link">Ajouter un module</button>');
 var $delCollectionButton = $('<button type="button" class="del_collection_link">Supprimer</button>');
 //le premier élément li de la liste (celui qui contient le bouton 'ajouter')
 var $newLinkLi = $('<li></li>').append($addCollectionButton);
@@ -36,9 +36,10 @@ function addCollectionForm($collection, $newLinkLi) {
 //rendu de la collection au chargement de la page
 $(document).ready(function() {
 
+    // var $nbPlaces = $('input#formation_nbPlaces').val();
+    // console.log($nbPlaces)
     //on pointe la liste complete (le conteneur de la collection)
     var $collection = $("ul.collections")
-    var $collection2 = $("ul.collections")
     //on y ajoute le bouton ajouter (à la fin du contenu)
     $collection.append($newLinkLi);
 
@@ -47,14 +48,8 @@ $(document).ready(function() {
         //on génère et ajoute un bouton "supprimer"
         $(this).append(generateDeleteButton());
     })
-
-    $(".collection").each(function(){
-        //on génère et ajoute un bouton "supprimer"
-        $(this).append(generateDeleteButton());
-    })
     //le data index de la collection est égal au nombre de input à l'intérieur
     $collection.data('index', $collection.find(':input').length);
-    $collection2.data('index', $collection2.find(':input').length);
 
     $addCollectionButton.on('click', function() { // au clic sur le bouton ajouter
         // var nbPlaces = $('input#formation_nbPlaces').val();
@@ -67,7 +62,6 @@ $(document).ready(function() {
 
                 //on appelle la fonction qui ajoute un nouveau champ
                 addCollectionForm($collection, $newLinkLi);
-                addCollectionForm($collection2, $newLinkLi);
         //     }
         //     else alert("Nb max atteint !")
         // }

@@ -97,7 +97,7 @@ class AddEditController extends AbstractController {
             return $this->redirectToRoute('showInfoFormateur', ['id' => $formateur->getID()]);
         }
 
-        return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
+        return $this->render('add_edit/addFormateur.html.twig', ['form' => $form->createView(),
             'title' => $title, 'editMode' => $formateur->getId() != null, 'formateur' => $formateur,
         ]);
     }

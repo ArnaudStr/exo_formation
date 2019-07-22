@@ -32,21 +32,13 @@ class StagiaireType extends AbstractType
         ->add('email',TextType::class)
         ->add('telephone',TextType::class)
         // Collection type
-        // ->add("formations", EntityType::class, [
-        //     "class" => Formation::class,
-        //     "choice_label" => "nom",
-        //     "required" => false                
-        // ])
-        // ->add('formations', CollectionType::class, [
-        //     'entry_type' => Formation::class, 
-        //     'entry_options' => [
-        //         'label' => false,
-        //     ],
-        //     "required" => false,
-        //     // "choice_label" => "nom",
-
-        // ])  
-        ->add('Valider', SubmitType::class)
+        ->add('formations', CollectionType::class, [
+            'entry_type' => EntityType::class,
+            'entry_options' => ['label' => "Choisir formation :", "class" => Formation::class,],
+            'allow_add' => true,
+            'allow_delete' => true
+        ])
+        ->add('submit', SubmitType::class)
     ;
     }
 

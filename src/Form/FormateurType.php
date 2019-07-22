@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class FormateurType extends AbstractType
 {
@@ -29,12 +30,19 @@ class FormateurType extends AbstractType
             ->add('email',TextType::class)
             ->add('telephone',TextType::class)
             // Collection type
-            ->add("categories", EntityType::class, [
-                "class"=>Categorie::class, 
-                "choice_label" => 'nom'
+            // ->add("categories", EntityType::class, [
+            //     "class"=>Categorie::class, 
+            //     "choice_label" => 'nom'
+            // ])
+
+            ->add('categories', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => ['label' => "Choisir catégorie :", "class" => Categorie::class,],
+                'allow_add' => true,
+                'allow_delete' => true
             ])
 
-            ->add('Valider', SubmitType::class)
+            ->add('submit', SubmitType::class)
         ;
     }
 

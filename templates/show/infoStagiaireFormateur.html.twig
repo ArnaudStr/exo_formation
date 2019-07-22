@@ -22,7 +22,11 @@
 
     {% if stagiaire is defined %}
 
-    <a href=" {{  path("showDiplome", { "id": personne.id } )  }}  " >Donner le diplôme</a>
+    {% for formation in stagiaire.formations %}
+
+    <p>Diplôme « {{ stagiaire.formation.nom  }} » <a href=" {{  path("showDiplome", { "id": personne.id } )  }}  " >Donner le diplôme</a></p>
+
+    {% endfor %}
 
     {% endif %}
 

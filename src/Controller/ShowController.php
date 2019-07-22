@@ -111,4 +111,11 @@ class ShowController extends AbstractController {
         ]);
     }
 
+    /**
+     * @Route("/show/diplome", name="showDiplome")
+     */
+    public function showDiplome(){
+        return $this->render("show/diplome.html.twig");
+    }
+
 }

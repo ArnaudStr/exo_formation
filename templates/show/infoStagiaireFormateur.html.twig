@@ -20,4 +20,10 @@
     <p>Courriel : {{ personne.email }}<p>
     <p>Téléphone : {{ personne.telephone }}<p>
 
+    {% if stagiaire is defined %}
+
+    <a href=" {{  path("showDiplome", { "id": personne.id } )  }}  " >Donner le diplôme</a>
+
+    {% endif %}
+
 {% endblock %}

@@ -20,13 +20,13 @@
         <tbody>
             {% for stagiaire in formation.stagiaires %}
             <tr>
-                <th scope="col">{{ stagiaire.prenom }}</th>
-                <th scope="col">{{ stagiaire.nom }}</th>
-                <th scope="col">{{ stagiaire.sexe }}</th>
-                <th scope="col">{{ stagiaire.dateNaissance }}</th>
-                <th scope="col">{{ stagiaire.ville }}</th>
-                <th scope="col">{{ stagiaire.email }}</th>
-                <th scope="col">{{ stagiaire.telephone }}</th>
+                <a href="{{ path('showInfoFormateur',{'id':personne.id}) }}" ><td scope="col">{{ stagiaire.prenom }}</td></a>
+                <td scope="col">{{ stagiaire.nom }}</td>
+                <td scope="col">{{ stagiaire.sexe }}</td>
+                <td scope="col">{{ stagiaire.dateNaissance }}</td>
+                <td scope="col">{{ stagiaire.ville }}</td>
+                <td scope="col">{{ stagiaire.email }}</td>
+                <td scope="col">{{ stagiaire.telephone }}</td>
                 <td><a href="{{ path('editStagiaire',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td>
                 <td><a href="{{ path('deleteStagiaire',{'id':personne.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
             </tr>

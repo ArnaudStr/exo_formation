@@ -14,11 +14,11 @@
 
     <input type='hidden' id="maxNb" value = '15'>
 
-    <ul id="collections" data-prototype= "{{ form_row(form.formations.vars.prototype)|e('html_attr') }}">
+    <ul id="collections" data-prototype= "{{ form_row(form.categories.vars.prototype)|e('html_attr') }}">
 
-        {% for formation in form.formations %}
+        {% for categorie in form.categories %}
             <li>
-                {{ form_row(formation) }}
+                {{ form_row(categorie) }}
             </li>
         {% endfor %}
 

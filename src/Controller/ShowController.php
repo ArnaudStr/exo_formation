@@ -67,7 +67,8 @@ class ShowController extends AbstractController {
     /**
      * @Route("/show/infoStagiaire/{id}", name="showInfoStagiaire")
      */
-    public function showInfoStagiaire(Stagiaire $stagiaire, ObjectManager $manager, Request $request) {
+    // public function showInfoStagiaire(Stagiaire $stagiaire, ObjectManager $manager, Request $request) {
+    public function showInfoStagiaire(Stagiaire $stagiaire) {
 
         return $this->render('show/infoStagiaireFormateur.html.twig', [
             'title' => 'Informations du stagiaire '.$stagiaire,

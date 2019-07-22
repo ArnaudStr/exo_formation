@@ -39,11 +39,12 @@ class FormationType extends AbstractType
             ])
 
             // Collection type
-            ->add('stagiaires', CollectionType::class, [
+            ->add('modules', CollectionType::class, [
                 'entry_type' => EntityType::class,
-                'entry_options' => ['label' => "Choisir stagiaire :", "class" => Stagiaire::class,],
+                'entry_options' => ['label' => "Choisir module :", "class" => Module::class,],
                 'allow_add' => true,
-                'allow_delete' => true
+                'allow_delete' => true,
+                "required" => false                
             ])
 
             ->add('submit', SubmitType::class)

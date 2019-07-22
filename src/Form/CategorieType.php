@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class CategorieType extends AbstractType
 {
@@ -28,17 +29,23 @@ class CategorieType extends AbstractType
                 "required" => false
             ])
             // Collection type
-            ->add("modules", EntityType::class, [
-                "mapped" => false,
-                "class" => Module::class, 
-                "query_builder" => function(EntityRepository $er){
-                    return $er->createQueryBuilder("m")->orderBy("m.nom", "ASC");
-                }, 
-                "choice_label" => "nom",
+            ->add('modules', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => ['label' => "Choisir module :", "class" => Module::class,],
+                'allow_add' => true,
+                'allow_delete' => true,
                 "required" => false                
             ])
 
-            ->add('Valider', SubmitType::class)
+            ->add('formateurs', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => ['label' => "Choisir formateur :", "class" => Formateur::class,],
+                'allow_add' => true,
+                'allow_delete' => true,
+                "required" => false                
+            ])
+
+            ->add('submit', SubmitType::class)
         ;
     }
 

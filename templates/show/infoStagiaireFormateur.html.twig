@@ -22,9 +22,22 @@
 
     {% if stagiaire is defined %}
 
-    {% for formation in stagiaire.formations %}
+    <p>Listes des formations :</p>
+        {% for formation in stagiaire.formations %}
+            {% if formation.dateFin < date() %}
+                <p><a href="{{ path('showInfoSession',{'id':formation.id}) }}">{{ formation ~ '    ' }}</a><a href=" {{ path("createPdf", { "id": personne.id, "id_formation" : formation.id } ) }}  " ><button type="button" class="btn btn-warning" >Obtenir le diplôme en PDF</button></a></p>
+            {% else %}
+                
+                <p><a href="{{ path('showInfoSession',{'id':formation.id}) }}">{{ formation }}</a></p>
+            {% endif %}
 
-    <p>Diplôme « {{ formation }} » <a href=" {{ path("createPdf", { "id": personne.id, "id_formation" : formation.id } ) }}  " ><button type="button" class="btn btn-warning" >Générer un pdf</button></a></p>
+        {% endfor %}
+    
+    {% else %}
+
+    <p>Listes des catégories :</p>
+    {% for categorie in formateur.categories %}
+        <p>{{ categorie }}</p>
 
     {% endfor %}
 

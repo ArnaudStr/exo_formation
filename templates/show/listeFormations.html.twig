@@ -28,8 +28,8 @@
                 <td>{{  formation.nbPlaces  }}</td>
                 <td>{{  formation.stagiaires|length  }}</td>
                 <td>{{  nbPlacesRestantes  }}</td>
-                <td></td>
-                <td></td>
+                <td style="text-align:center"><a href="{{ path('showInfoSession',{'id':formation.id}) }}"><i class="fas fa-list-alt"></i></a></td>
+                <td style="text-align:center"><a href="{{ path('showListeStagiairesSession',{'id':formation.id}) }}"><i class="fas fa-list-alt"></i></a></td>
                 <td><a href="{{ path('editFormation',{'id':formation.id}) }}"><i class="fas fa-edit"></i></a></td>
                 <td><a href="{{ path('deleteFormation',{'id':formation.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
             </tr>

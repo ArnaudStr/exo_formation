@@ -47,13 +47,18 @@ class FormationType extends AbstractType
                 "required" => false                
             ])
 
-            ->add('stagiaires', CollectionType::class, [
-                'entry_type' => EntityType::class,
-                'entry_options' => ['label' => "Choisir stagiaire :", "class" => Stagiaire::class,],
-                'allow_add' => true,
-                'allow_delete' => true,
-                "required" => false                
-            ])
+            // ->add('duree', IntegerType::class, [
+            //     "label" => "Dureé de la formation (en jours)",
+            //     "mapped" => false,
+            // ])
+
+            // ->add('stagiaires', CollectionType::class, [
+            //     'entry_type' => EntityType::class,
+            //     'entry_options' => ['label' => "Choisir stagiaire :", "class" => Stagiaire::class,],
+            //     'allow_add' => true,
+            //     'allow_delete' => true,
+            //     "required" => false                
+            // ])
 
             ->add('submit', SubmitType::class)
         ;

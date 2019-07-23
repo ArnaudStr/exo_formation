@@ -26,16 +26,17 @@ class AddEditController extends AbstractController {
      */
     public function addEditFormation(Formation $formation = null, ObjectManager $manager, Request $request) {
 
+        $modif = true;
         // Ajout d'une formation
         if(!$formation) {
+            $modif = false;
             $formation = new Formation();
             $title = 'Ajout d\'une formation ';
         }
 
- 
         // Modification d'une formation
         else {
-            $title = 'Modification dd la formation '.$formation;
+            $title = 'Modification de la formation '.$formation;
         }
  
         // creation du formulaire (ajout ou modification)
@@ -56,8 +57,9 @@ class AddEditController extends AbstractController {
 
         // Affichage de la vue contenant le formulaire
         return $this->render('add_edit/addEditFormation.html.twig', ['form' => $form->createView(),
-            'title' => $title, 'editMode' => $formation->getId() != null, 'formation' => $formation
+            'title' => $title, 'editMode' => $modif, 'formation' => $formation
         ]);
+        
     }
 
     /**
@@ -148,9 +150,6 @@ class AddEditController extends AbstractController {
             'title' => $title, 'editMode' => $stagiaire->getId() != null, 'stagiaire' => $stagiaire,
         ]);
 
-        // return $this->render('add_edit/addEdit.html.twig', ['form' => $form->createView(),
-        //     'title' => $title, 'editMode' => $stagiaire->getId() != null, 'stagiaire' => $stagiaire,
-        // ]);
     }
 
     /**

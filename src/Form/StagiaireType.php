@@ -37,7 +37,8 @@ class StagiaireType extends AbstractType
             'entry_options' => ['label' => "Choisir formation :", "class" => Formation::class,],
             'allow_add' => true,
             'allow_delete' => true,
-            "required" => false                
+            "required" => false,
+            "by_reference" => false                                
         ])
         ->add('submit', SubmitType::class)
     ;

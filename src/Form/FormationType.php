@@ -38,38 +38,32 @@ class FormationType extends AbstractType
                     "label" => "Nombre de places" ]
             ])
 
-            // Collection type
+            ->add('stagiaires', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => ['label' => "Choisir stagiaire :", "class" => Stagiaire::class,],
+                'allow_add' => true,
+                'allow_delete' => true,
+                "required" => false,
+                "by_reference" => false                                
+            ])
+
             ->add('modules', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry_options' => ['label' => "Choisir module :", "class" => Module::class,],
                 'allow_add' => true,
                 'allow_delete' => true,
-                "required" => false                
+                "required" => false,
+                "by_reference" => false                
+               
             ])
 
-            // ->add('stagiaires', 'Formation', [
-            //     'entry_options' => ['label' => "Choisir stagiaire :"],
-            //     'allow_add' => true,
-            //     'allow_remove' => true,
-            //     'prototype' => true,
-            //     "required" => false,                
-            //     'attr' => [
-            //         'class' => 'Stagiaire',
-            //     ]
-            // ])
 
             // ->add('duree', IntegerType::class, [
             //     "label" => "Dureé de la formation (en jours)",
             //     "mapped" => false,
             // ])
 
-            // ->add('stagiaires', CollectionType::class, [
-            //     'entry_type' => EntityType::class,
-            //     'entry_options' => ['label' => "Choisir stagiaire :", "class" => Stagiaire::class,],
-            //     'allow_add' => true,
-            //     'allow_delete' => true,
-            //     "required" => false                
-            // ])
+
 
             ->add('submit', SubmitType::class)
         ;

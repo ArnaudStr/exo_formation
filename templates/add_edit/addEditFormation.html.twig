@@ -9,24 +9,21 @@
     {{form_row(form.dateDebut) }}
     {{form_row(form.dateFin) }}
 
-    {# <input type='hidden' id="maxNb" value = {{  }}> #}
-
-    {# <ul class="collections" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
+    <ul id="modules" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
 
         {% for module in form.modules %}
             <li>
                 {{ form_row(module) }}
             </li>
-            <li>
+            {# <li>
                 {{ form_row(form.duree) }}
-            </li>
+            </li> #}
 
-        {% endfor %} #}
+        {% endfor %} 
+    </ul>
 
-    {# </ul> #}
-
-    {# {% if editMode %}
-        <ul class="collections" data-prototype= "{{ form_row(form.stagiaires.vars.prototype)|e('html_attr') }}">
+    {% if editMode %}
+        <ul id="stagiaires" data-prototype= "{{ form_row(form.stagiaires.vars.prototype)|e('html_attr') }}">
 
             {% for stagiaire in form.stagiaires %}
                 <li>
@@ -35,25 +32,20 @@
             {% endfor %}
 
         </ul>
-    {% endif %} #}
-
-    {# {% form_theme form 'add_edit/jquery.collection.html.twig' %}
-    {{ form(form) }} #}
-    
-
-      {{form_row(form.submit) }} 
+    {% endif %}
+ 
+    {{form_row(form.submit) }} 
 {{ form_end(form) }} 
 
 {% endblock %}
 
 {% block javascripts %}
-    {# <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/jquery.collection.js') }}"></script>
-
-    <script type="text/javascript">
-        $('.my-selector').collection();
-    </script> #}
-
     {{ parent()}}
-    <script src="/js/collectionHandler.js"></script>
+
+    {% if editMode %}
+        <script src="/js/editFormationHandler.js"></script>
+    {% else %}
+        <script src="/js/addFormationHandler.js"></script>
+    {% endif %}
+    
 {% endblock %}

@@ -1,39 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   {{ form_start(form) }}
+    {{ form_start(form) }}
 
+        {{form_row(form.nom) }} 
 
-    {{form_row(form.nom) }} 
+        {# <ul class="collections" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
 
-    <input type='hidden' id="maxNb" value ='20'>
+            {% for module in form.modules %}
+                <li>
+                    {{ form_row(module) }}
+                </li>
+            {% endfor %}
 
-    {# <ul class="collections" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
+        </ul> #}
 
-        {% for module in form.modules %}
-            <li>
-                {{ form_row(module) }}
-            </li>
-        {% endfor %}
+        <ul class="collections" data-prototype= "{{ form_row(form.formateurs.vars.prototype)|e('html_attr') }}">
 
-    </ul> #}
+            {% for formateur in form.formateurs %}
+                <li>
+                    {{ form_row(formateur) }}
+                </li>
+            {% endfor %}
 
-    <ul class="collections" data-prototype= "{{ form_row(form.formateurs.vars.prototype)|e('html_attr') }}">
+        </ul>
 
-        {% for formateur in form.formateurs %}
-            <li>
-                {{ form_row(formateur) }}
-            </li>
-        {% endfor %}
-
-    </ul>
-
-      {{form_row(form.submit) }} 
-{{ form_end(form) }}
+        {{form_row(form.submit) }} 
+    {{ form_end(form) }}
 
 {% endblock %}
 
 {% block javascripts %}
     {{ parent()}}
-    <script src="/js/collectionHandler.js"></script>
+    <script src="/js/categorieHandler.js"></script>
 {% endblock %}

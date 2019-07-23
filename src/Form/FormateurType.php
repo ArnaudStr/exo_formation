@@ -40,7 +40,9 @@ class FormateurType extends AbstractType
                 'entry_options' => ['label' => "Choisir catégorie :", "class" => Categorie::class,],
                 'allow_add' => true,
                 'allow_delete' => true,
-                "required" => false                
+                "required" => false,
+                "by_reference" => false                
+            
             ])
 
             ->add('submit', SubmitType::class)

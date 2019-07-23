@@ -46,6 +46,11 @@ class AddEditController extends AbstractController {
                
         // Validation du formulaire
         if($form->isSubmitted() && $form->isValid()) {
+         //   if($form->getDate("dateDebut") > $form->getDate("dateFin")){
+             //   return $this->redirectToRoute("addFormation");
+                // echo "La formation ne peut pas s'achever avant d'avoir débuté.";
+                
+            // }
             // On ajoute la formation en BDD
             $manager->persist($formation);
             $manager->flush();

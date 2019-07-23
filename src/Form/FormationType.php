@@ -47,6 +47,17 @@ class FormationType extends AbstractType
                 "required" => false                
             ])
 
+            // ->add('stagiaires', 'Formation', [
+            //     'entry_options' => ['label' => "Choisir stagiaire :"],
+            //     'allow_add' => true,
+            //     'allow_remove' => true,
+            //     'prototype' => true,
+            //     "required" => false,                
+            //     'attr' => [
+            //         'class' => 'Stagiaire',
+            //     ]
+            // ])
+
             // ->add('duree', IntegerType::class, [
             //     "label" => "Dureé de la formation (en jours)",
             //     "mapped" => false,

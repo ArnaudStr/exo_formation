@@ -11,7 +11,7 @@
 
     {# <input type='hidden' id="maxNb" value = {{  }}> #}
 
-    <ul class="collections" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
+    {# <ul class="collections" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
 
         {% for module in form.modules %}
             <li>
@@ -21,9 +21,9 @@
                 {{ form_row(form.duree) }}
             </li>
 
-        {% endfor %}
+        {% endfor %} #}
 
-    </ul>
+    {# </ul> #}
 
     {# {% if editMode %}
         <ul class="collections" data-prototype= "{{ form_row(form.stagiaires.vars.prototype)|e('html_attr') }}">
@@ -36,14 +36,24 @@
 
         </ul>
     {% endif %} #}
+
+    {# {% form_theme form 'add_edit/jquery.collection.html.twig' %}
+    {{ form(form) }} #}
     
 
       {{form_row(form.submit) }} 
-{{ form_end(form) }}
+{{ form_end(form) }} 
 
 {% endblock %}
 
 {% block javascripts %}
+    {# <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/jquery.collection.js') }}"></script>
+
+    <script type="text/javascript">
+        $('.my-selector').collection();
+    </script> #}
+
     {{ parent()}}
     <script src="/js/collectionHandler.js"></script>
 {% endblock %}

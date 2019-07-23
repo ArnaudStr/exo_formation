@@ -22,20 +22,6 @@ class CategorieType extends AbstractType
         $builder
             ->add('nom',TextType::class)
 
-            // ->add("formateurs", EntityType::class, [
-            //     "class" => Formateur::class, 
-            //     "choice_label"=> "nom",
-            //     "required" => false
-            // ])
-            // Collection type
-            // ->add('modules', CollectionType::class, [
-            //     'entry_type' => EntityType::class,
-            //     'entry_options' => ['label' => "Choisir module :", "class" => Module::class,],
-            //     'allow_add' => true,
-            //     'allow_delete' => true,
-            //     "required" => false                
-            // ])
-
             ->add('formateurs', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry_options' => ['label' => "Choisir formateur :", "class" => Formateur::class,],

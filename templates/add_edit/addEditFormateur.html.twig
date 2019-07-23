@@ -3,33 +3,29 @@
 {% block body %}
    {{ form_start(form) }}
 
+        {{form_row(form.nom) }} 
+        {{form_row(form.prenom) }}
+        {{form_row(form.sexe) }}
+        {{form_row(form.dateNaissance) }}
+        {{form_row(form.ville) }}
+        {{form_row(form.email) }}
+        {{form_row(form.telephone) }}
 
-    {{form_row(form.nom) }} 
-    {{form_row(form.prenom) }}
-    {{form_row(form.sexe) }}
-    {{form_row(form.dateNaissance) }}
-    {{form_row(form.ville) }}
-    {{form_row(form.email) }}
-    {{form_row(form.telephone) }}
+        <ul id="categories" data-prototype= "{{ form_row(form.categories.vars.prototype)|e('html_attr') }}">
+            {% for categorie in form.categories %}
+                <li>
+                    {{ form_row(categorie) }}
+                </li>
+            {% endfor %}
+        </ul>
 
-    <input type='hidden' id="maxNb" value = '15'>
+        {{form_row(form.submit) }} 
 
-    <ul class="collections" data-prototype= "{{ form_row(form.categories.vars.prototype)|e('html_attr') }}">
-
-        {% for categorie in form.categories %}
-            <li>
-                {{ form_row(categorie) }}
-            </li>
-        {% endfor %}
-
-    </ul>
-
-      {{form_row(form.submit) }} 
-{{ form_end(form) }}
+    {{ form_end(form) }}
 
 {% endblock %}
 
 {% block javascripts %}
     {{ parent()}}
-    <script src="/js/collectionHandler.js"></script>
+    <script src="/js/formateurHandler.js"></script>
 {% endblock %}

@@ -30,11 +30,6 @@ class FormateurType extends AbstractType
             ->add('email',TextType::class)
             ->add('telephone',TextType::class)
             // Collection type
-            // ->add("categories", EntityType::class, [
-            //     "class"=>Categorie::class, 
-            //     "choice_label" => 'nom'
-            // ])
-
             ->add('categories', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry_options' => ['label' => "Choisir catégorie :", "class" => Categorie::class,],

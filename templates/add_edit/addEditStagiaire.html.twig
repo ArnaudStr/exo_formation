@@ -12,9 +12,7 @@
     {{form_row(form.email) }}
     {{form_row(form.telephone) }}
 
-    <input type='hidden' id="maxNb" value = '15'>
-
-    <ul class="collections" data-prototype= "{{ form_row(form.formations.vars.prototype)|e('html_attr') }}">
+    <ul id="formations" data-prototype= "{{ form_row(form.formations.vars.prototype)|e('html_attr') }}">
 
         {% for formation in form.formations %}
             <li>
@@ -31,5 +29,5 @@
 
 {% block javascripts %}
     {{ parent()}}
-    <script src="/js/collectionHandler.js"></script>
+    <script src="/js/stagiaireHandler.js"></script>
 {% endblock %}

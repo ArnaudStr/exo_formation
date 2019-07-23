@@ -54,8 +54,18 @@ class FormationType extends AbstractType
                 'allow_delete' => true,
                 "required" => false,
                 "by_reference" => false                
-               
             ])
+
+            // ->add('dureeModules', CollectionType::class, [
+            //     'entry_type' => EntityType::class,
+            //     'entry_options' => ['label' => "Choisir module :", "class" => DureeModule::class,],
+            //     'allow_add' => true,
+            //     'allow_delete' => true,
+            //     "required" => false,
+            //     "by_reference" => false                
+            // ])
+
+
 
 
             // ->add('duree', IntegerType::class, [

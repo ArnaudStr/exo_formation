@@ -5,17 +5,7 @@
 
         {{form_row(form.nom) }} 
 
-        {# <ul class="collections" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
-
-            {% for module in form.modules %}
-                <li>
-                    {{ form_row(module) }}
-                </li>
-            {% endfor %}
-
-        </ul> #}
-
-        <ul class="collections" data-prototype= "{{ form_row(form.formateurs.vars.prototype)|e('html_attr') }}">
+        <ul id="formateurs" data-prototype= "{{ form_row(form.formateurs.vars.prototype)|e('html_attr') }}">
 
             {% for formateur in form.formateurs %}
                 <li>

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Module;
 use App\Entity\Formation;
 use App\Entity\Stagiaire;
+use App\Form\ModuleDureeType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -47,14 +48,16 @@ class FormationType extends AbstractType
                 "by_reference" => false                                
             ])
 
-            ->add('modules', CollectionType::class, [
-                'entry_type' => EntityType::class,
-                'entry_options' => ['label' => "Choisir module :", "class" => Module::class,],
+            ->add('durees', CollectionType::class, [
+                'entry_type' => ModuleDureeType::class,
+                'entry_options' => ['label' => "Choisir module :", ],
+                'mapped' => false,
                 'allow_add' => true,
                 'allow_delete' => true,
                 "required" => false,
-                "by_reference" => false                
+                "by_reference" => false  
             ])
+
 
             // ->add('dureeModules', CollectionType::class, [
             //     'entry_type' => EntityType::class,
@@ -73,15 +76,6 @@ class FormationType extends AbstractType
             //     "required" => false,
             //     "by_reference" => false                
             // ])
-
-
-
-            // ->add('duree', IntegerType::class, [
-            //     "label" => "Dureé du module (en jours) :",
-            //     "mapped" => false,
-            // ])
-
-
 
             ->add('submit', SubmitType::class)
         ;

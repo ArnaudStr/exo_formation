@@ -9,7 +9,7 @@
     {{form_row(form.dateDebut) }}
     {{form_row(form.dateFin) }}
 
-    <ul id="modules" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
+    <ul id="durees" data-prototype= "{{ form_row(form.durees.vars.prototype)|e('html_attr') }}">
 
         {% for module in form.modules %}
              <li>
@@ -39,11 +39,10 @@
 
 {% block javascripts %}
     {{ parent()}}
+    <script src="/js/FormationHandlerModules.js"></script>
 
     {% if editMode %}
-        <script src="/js/editFormationHandler.js"></script>
-    {% else %}
-        <script src="/js/addFormationHandler.js"></script>
+        <script src="/js/FormationHandlerStagiaires.js"></script>
     {% endif %}
     
 {% endblock %}

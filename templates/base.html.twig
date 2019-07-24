@@ -15,6 +15,7 @@
     </head>
     
     <body>
+
         {# On affiche le site uniquement si on est connecté #}
         {% if is_granted('ROLE_USER') or login is defined %}
             

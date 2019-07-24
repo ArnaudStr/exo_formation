@@ -1,5 +1,5 @@
 //création de 3 éléments HTMLElement
-var $addButtonDuree = $('<button type="button" class="add_collection_link">Ajouter un duree</button>');
+var $addButtonDuree = $('<button type="button" class="add_collection_link">Ajouter un module</button>');
 var $delButton = $('<button type="button" class="del_collection_link">Supprimer</button>');
 //le premier élément li de la liste (celui qui contient le bouton 'ajouter')
 var $newLinkLiDuree = $('<li></li>').append($addButtonDuree);

@@ -71,7 +71,7 @@ class AddEditController extends AbstractController {
             $manager->flush();
  
             // On redirige vers la route (affichage des infos de la formation)
-            // return $this->redirectToRoute('showInfoSession', ['id' => $formation->getId()]);
+            return $this->redirectToRoute('showInfoSession', ['id' => $formation->getId()]);
         }
 
         // Affichage de la vue contenant le formulaire

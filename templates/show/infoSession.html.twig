@@ -13,7 +13,7 @@
 		</thead>
 
 		<tbody>
-			{% if formation.modules %}
+			{# {% if formation.modules %}
 				{% for module in formation.modules %}
 					{% if categorieM is not defined or categorieM != module.categorie %}	
 						<tr>
@@ -28,6 +28,24 @@
 							<td></td>
 						</tr>
 					{% set categorieM = module.categorie %}
+				{% endfor %}
+			{% endif %} #}
+
+			{% if formation.dureeModules %}
+				{% for dureeModule in formation.dureeModules %}
+					{% if categorieM is not defined or categorieM != dureeModule.module.categorie %}	
+						<tr>
+							<td style="text-align: center"><strong>{{ dureeModule.module.categorie }}<strong></td> 
+							{% for formateur in dureeModule.module.categorie.formateurs %}
+								<td >{{ formateur }}</td> 
+							{% endfor %}
+						</tr>		
+					{% endif %}				
+						<tr>
+							<td>{{ dureeModule.module ~ ' (' ~ dureeModule.duree ~ ' jours)' }}</td>
+							<td></td>
+						</tr>
+					{% set categorieM = dureeModule.module.categorie %}
 				{% endfor %}
 			{% endif %}
 		</tbody>

@@ -77,12 +77,6 @@ class FormationType extends AbstractType
             //     "by_reference" => false                
             // ])
 
-
-
-
-
-
-
             ->add('submit', SubmitType::class)
         ;
     }

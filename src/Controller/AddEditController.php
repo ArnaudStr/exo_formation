@@ -27,6 +27,9 @@ class AddEditController extends AbstractController {
      */
     public function addEditFormation(Formation $formation = null, ObjectManager $manager, Request $request) {
 
+        // parcours du tableau des durées
+        $i=0;
+        // $dureesModules;
         $modif = true;
         // Ajout d'une formation
         if(!$formation) {
@@ -52,24 +55,23 @@ class AddEditController extends AbstractController {
             // Ajouter les modules avec leur date correspondantes
             $modules = $form->get('durees')->getData();
             
-            dump($modules);
-            return $this->render('base.html.twig', [
-                "title" => "ntm",
-            ]);
-
             foreach ($modules as $module) {
-                $dureeModule = new DureeModule();
-                $dureeModule->setFormation($formation);
-                $dureeModule->setModule($module);
-                // $dureeModule->setDuree(FAUT TROUVER LA DUREE DE CHAK MODULE);
+                $dureeModule[] = new DureeModule();
+                $dureeModule[$i]->setFormation($formation);
+                $dureeModule[$i]->setModule($module->getModule());
+                $dureeModule[$i]->setDuree($module->getDuree());
+                $manager->persist($dureeModule[$i]);
+                $i++;
             }
+
+            dump($dureeModule);
 
             // On ajoute la formation en BDD
             $manager->persist($formation);
             $manager->flush();
  
             // On redirige vers la route (affichage des infos de la formation)
-            return $this->redirectToRoute('showInfoSession', ['id' => $formation->getId()]);
+            // return $this->redirectToRoute('showInfoSession', ['id' => $formation->getId()]);
         }
 
         // Affichage de la vue contenant le formulaire

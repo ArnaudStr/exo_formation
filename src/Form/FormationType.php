@@ -65,11 +65,19 @@ class FormationType extends AbstractType
             //     "by_reference" => false                
             // ])
 
+            // ->add('durees', CollectionType::class, [
+            //     'entry_type' => IntegerType::class,
+            //     'entry_options' => ['label' => "Durée du module :"],
+            //     'allow_add' => true,
+            //     'allow_delete' => true,
+            //     "required" => false,
+            //     "by_reference" => false                
+            // ])
 
 
 
             // ->add('duree', IntegerType::class, [
-            //     "label" => "Dureé de la formation (en jours)",
+            //     "label" => "Dureé du module (en jours) :",
             //     "mapped" => false,
             // ])
 

@@ -112,5 +112,14 @@ class ShowController extends AbstractController {
         ]);
     }
 
-    
+        /**
+     * @Route("/show/infoCategorie/{id}", name="showInfoCategorie")
+     */
+    public function showInfoCategorie(Categorie $categorie, ObjectManager $manager, Request $request) {
+
+        return $this->render('show/infoCategorie.html.twig', [
+            'title' => 'Informations de la  categorie '.$categorie,
+            'categorie' => $categorie
+        ]);
+    }
 }

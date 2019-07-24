@@ -31,4 +31,31 @@
 		</tbody>
 	</table>
 
+	<h2>Liste des stagiaires de la formation :</h2>
+
+	<table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Détails</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for stagiaire in formation.stagiaires %}
+            <tr>
+				<td scope="col">{{ stagiaire.prenom }}</td>
+				<td scope="col">{{ stagiaire.nom }}</td>
+				<td><a href="{{ path('showInfoStagiaire',{'id':stagiaire.id}) }}"><i class="fas fa-list-alt"></i></a></td>
+                <td><a href="{{ path('editStagiaire',{'id':stagiaire.id}) }}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="{{ path('deleteStagiaire',{'id':stagiaire.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
 {% endblock %}

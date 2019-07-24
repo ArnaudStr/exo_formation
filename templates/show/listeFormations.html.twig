@@ -11,10 +11,9 @@
                 <th scope="col">Nb places théorique</th>
                 <th scope="col">Nb places réservées</th>
                 <th scope="col">Nb places restantes</th>
-                <th scope="col">Détails de la formation</th>
-                <th scope="col">Liste des stagiaires</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th scope="col">Détails</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
             </tr>
         </thead>
         
@@ -28,8 +27,7 @@
                 <td>{{  formation.nbPlaces  }}</td>
                 <td>{{  formation.stagiaires|length  }}</td>
                 <td>{{  nbPlacesRestantes  }}</td>
-                <td style="text-align:center"><a href="{{ path('showInfoSession',{'id':formation.id}) }}"><i class="fas fa-list-alt"></i></a></td>
-                <td style="text-align:center"><a href="{{ path('showListeStagiairesSession',{'id':formation.id}) }}"><i class="fas fa-list-alt"></i></a></td>
+                <td><a href="{{ path('showInfoSession',{'id':formation.id}) }}"><i class="fas fa-list-alt"></i></a></td>
                 <td><a href="{{ path('editFormation',{'id':formation.id}) }}"><i class="fas fa-edit"></i></a></td>
                 <td><a href="{{ path('deleteFormation',{'id':formation.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
             </tr>

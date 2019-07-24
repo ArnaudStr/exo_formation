@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<table class="table table-striped table-warning">
+		<thead>
+			<tr>
+				<th scope="col">Modules</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% if categorie.modules %}
+				{% for module in categorie.modules %}
+                    <tr>
+                        <td >{{ module }}</td> 
+                    </tr>	
+                {% endfor %}	
+			{% endif %}
+		</tbody>
+	</table>
+
+	<h2>Liste des formateurs de la categorie :</h2>
+
+	<table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Détails</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for formateur in categorie.formateurs %}
+            <tr>
+				<td scope="col">{{ formateur.prenom }}</td>
+				<td scope="col">{{ formateur.nom }}</td>
+				<td><a href="{{ path('showInfoFormateur',{'id':formateur.id}) }}"><i class="fas fa-list-alt"></i></a></td>
+                <td><a href="{{ path('editFormateur',{'id':formateur.id}) }}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="{{ path('deleteFormateur',{'id':formateur.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <p><a href="../../add/module"  ><button type="button" class="btn btn-warning btn-lg">Ajouter un module</button></a></p>
+
+
+{% endblock %}

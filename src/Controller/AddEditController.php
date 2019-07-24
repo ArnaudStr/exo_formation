@@ -2,17 +2,18 @@
 
 namespace App\Controller;
 
-use App\Form\StagiaireType;
 use App\Entity\Module;
 use App\Form\ModuleType;
 use App\Entity\Categorie;
 use App\Entity\Formateur;
 use App\Entity\Formation;
 use App\Entity\Stagiaire;
+use App\Entity\DureeModule;
 use App\Form\CategorieType;
 use App\Form\FormateurType;
 use App\Form\FormationType;
 
+use App\Form\StagiaireType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,11 +48,16 @@ class AddEditController extends AbstractController {
                
         // Validation du formulaire
         if($form->isSubmitted() && $form->isValid()) {
-         //   if($form->getDate("dateDebut") > $form->getDate("dateFin")){
-             //   return $this->redirectToRoute("addFormation");
-                // echo "La formation ne peut pas s'achever avant d'avoir débuté.";
-                
-            // }
+            $modules = $form->get('modules')->getData();
+            dump($modules);
+
+            foreach ($modules as $module) {
+                $dureeModule = new DureeModule();
+                $dureeModule->setFormation($formation);
+                $dureeModule->setModule($module);
+                // $dureeModule->setDuree(FAUT TROUVER LA DUREE DE CHAK MODULE);
+            }
+
             // On ajoute la formation en BDD
             $manager->persist($formation);
             $manager->flush();
@@ -233,7 +239,7 @@ class AddEditController extends AbstractController {
             $manager->persist($categorie);
             $manager->flush();
  
-            return $this->redirectToRoute('showListeModules');
+            return $this->redirectToRoute('showInfoCategorie', ['id' => $categorie->getId()]);
         }
 
         return $this->render('add_edit/addEditCategorie.html.twig', ['form' => $form->createView(),
@@ -249,7 +255,7 @@ class AddEditController extends AbstractController {
         $manager->remove($categorie);
         $manager->flush();
   
-        return $this->redirectToRoute('showListeCategories');
+        return $this->redirectToRoute('showListeModules');
     }
 
 }

@@ -12,12 +12,12 @@
     <ul id="modules" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
 
         {% for module in form.modules %}
-            <li>
+             <li>
                 {{ form_row(module) }}
             </li>
-            {# <li>
+             <!-- <li>
                 {{ form_row(form.duree) }}
-            </li> #}
+            </li>  -->
 
         {% endfor %} 
     </ul>

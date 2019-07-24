@@ -25,14 +25,15 @@
     <p>Listes des formations :</p>
         {% for formation in stagiaire.formations %}
             {% if formation.dateFin < date() %}
-                <p><a href="{{ path('showInfoSession',{'id':formation.id}) }}">{{ formation ~ '    ' }}</a><a href=" {{ path("createPdf", { "id": personne.id, "id_formation" : formation.id } ) }}  " ><button type="button" class="btn btn-warning" >Obtenir le diplôme en PDF</button></a></p>
+                <p><a href="{{ path('showInfoSession',{'id':formation.id}) }}">{{ formation ~ ' (terminée le ' ~ formation.dateFin | date("d/m/Y") ~ ') ' }}</a><a href=" {{ path("createPdf", { "id": personne.id, "id_formation" : formation.id } ) }}  " ><button type="button" class="btn btn-warning" >Obtenir le diplôme en PDF</button></a></p>
             {% else %}
                 
-                <p><a href="{{ path('showInfoSession',{'id':formation.id}) }}">{{ formation }}</a></p>
+                <p><a href="{{ path('showInfoSession',{'id':formation.id}) }}">{{ formation ~ ' (Du ' ~ formation.dateDebut | date("d/m/Y") ~ ' au ' ~ formation.dateFin | date("d/m/Y") ~ ') ' }}</a></p>
             {% endif %}
 
         {% endfor %}
-    
+
+            
     {% else %}
 
     <p>Listes des catégories :</p>

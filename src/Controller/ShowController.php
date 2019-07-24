@@ -34,7 +34,7 @@ class ShowController extends AbstractController {
     public function showInfoSession(Formation $formation, ObjectManager $manager, Request $request){
 
         return $this->render('show/infoSession.html.twig', [
-            'title' => 'Informations de la formtion '.$formation,
+            'title' => 'Informations de la formation '.$formation,
             'formation' => $formation
         ]);
     }

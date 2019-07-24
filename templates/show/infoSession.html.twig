@@ -2,6 +2,8 @@
 
 {% block body %}
 
+	<h2>Date de la formation : {{ formation.dateDebut | date("d/m/Y") }} au {{ formation.dateFin | date("d/m/Y") }}</h2>
+
 	<table class="table table-striped table-warning">
 		<thead>
 			<tr>

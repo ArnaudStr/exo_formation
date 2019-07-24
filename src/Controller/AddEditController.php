@@ -48,8 +48,14 @@ class AddEditController extends AbstractController {
                
         // Validation du formulaire
         if($form->isSubmitted() && $form->isValid()) {
-            $modules = $form->get('modules')->getData();
+
+            // Ajouter les modules avec leur date correspondantes
+            $modules = $form->get('durees')->getData();
+            
             dump($modules);
+            return $this->render('base.html.twig', [
+                "title" => "ntm",
+            ]);
 
             foreach ($modules as $module) {
                 $dureeModule = new DureeModule();

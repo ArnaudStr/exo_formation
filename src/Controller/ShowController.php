@@ -9,6 +9,7 @@ use App\Entity\Formation;
 use App\Entity\Stagiaire;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -120,6 +121,16 @@ class ShowController extends AbstractController {
         return $this->render('show/infoCategorie.html.twig', [
             'title' => 'Informations de la  categorie '.$categorie,
             'categorie' => $categorie
+        ]);
+    }
+
+    /**
+     * @Route("/show/calendar", name="session_calendar", methods={"GET"})
+     */
+    public function calendar(): Response
+    {
+        return $this->render('show/calendar.html.twig', [
+            'title' => 'Planning'
         ]);
     }
 }

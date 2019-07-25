@@ -9,7 +9,7 @@
     {{form_row(form.dateDebut) }}
     {{form_row(form.dateFin) }}
 
-    <ul id="durees" data-prototype= "{{ form_row(form.durees.vars.prototype)|e('html_attr') }}">
+    <ul id="durees" data-prototype="{{ form_row(form.durees.vars.prototype)|e('html_attr') }}">
 
         {% for module in form.modules %}
              <li>

@@ -1,5 +1,5 @@
 //création de 3 éléments HTMLElement
-var $addButtonFormation = $('<button type="button" class="add_collection_link">Ajouter un formation</button>');
+var $addButtonFormation = $('<button type="button" class="add_collection_link">Ajouter une formation</button>');
 var $delButton = $('<button type="button" class="del_collection_link">Supprimer</button>');
 //le premier élément li de la liste (celui qui contient le bouton 'ajouter')
 var $newLinkLiFormation = $('<li></li>').append($addButtonFormation);

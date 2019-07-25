@@ -26,7 +26,9 @@ class AddEditController extends AbstractController {
      * @Route("/edit/formation/{id}", name="editFormation")
      */
     public function addEditFormation(Formation $formation = null, ObjectManager $manager, Request $request) {
-
+        
+        // creation du formulaire (ajout ou modification)
+        $form = $this->createForm(FormationType::class, $formation);
         // parcours du tableau des durées
         $i=0;
         // $dureesModules;
@@ -36,6 +38,7 @@ class AddEditController extends AbstractController {
             $modif = false;
             $formation = new Formation();
             $title = 'Ajout d\'une formation ';
+            $form->remove('stagiaires');
         }
 
         // Modification d'une formation
@@ -43,8 +46,7 @@ class AddEditController extends AbstractController {
             $title = 'Modification de la formation '.$formation;
         }
  
-        // creation du formulaire (ajout ou modification)
-        $form = $this->createForm(FormationType::class, $formation);
+        
 
         // Pour le contrôle des données entrées dans le formulaire
         $form->handleRequest($request);
@@ -71,7 +73,7 @@ class AddEditController extends AbstractController {
             $manager->flush();
  
             // On redirige vers la route (affichage des infos de la formation)
-            // return $this->redirectToRoute('showInfoSession', ['id' => $formation->getId()]);
+            return $this->redirectToRoute('showInfoSession', ['id' => $formation->getId()]);
         }
 
         // Affichage de la vue contenant le formulaire

@@ -12,27 +12,27 @@
         </thead>
 
         <tbody>
-        {% for categorie in categories %}
-            <tr>
-                <td style="text-align: center"><strong>{{ categorie }}<strong></td> 
-                <td><a href="{{ path('showInfoCategorie',{'id':categorie.id}) }}"><i class="fas fa-list-alt"></i></a></td>
-                <td><a href="{{ path('editCategorie',{'id':categorie.id}) }}"><i class="fas fa-edit"></i></a></td>
-                <td><a href="{{ path('deleteCategorie',{'id':categorie.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
-            </tr>
-            {% for module in categorie.modules %}
-            <tr>
-                <td>{{ module.nom }}</td>
-                <td></td>
-                <td><a href="{{ path('editModule',{'id':module.id}) }}"><i class="fas fa-edit"></i></a></td>
-                <td><a href="{{ path('deleteModule',{'id':module.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
-            </tr>
+            {% for categorie in categories %}
+                <tr>
+                    <td style="text-align: center"><strong>{{ categorie }}<strong></td> 
+                    <td><a href="{{ path('showInfoCategorie',{'id':categorie.id}) }}"><i class="fas fa-list-alt"></i></a></td>
+                    <td><a href="{{ path('editCategorie',{'id':categorie.id}) }}"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="{{ path('deleteCategorie',{'id':categorie.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+                </tr>
+                {% for module in categorie.modules %}
+                <tr>
+                    <td>{{ module.nom }}</td>
+                    <td></td>
+                    <td><a href="{{ path('editModule',{'id':module.id}) }}"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="{{ path('deleteModule',{'id':module.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+                </tr>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
         </tbody>
     </table>
 
-    <p><a href="../add/categorie"  ><button type="button" class="btn btn-warning btn-lg">Ajouter une catégorie</button></a></p>
-    <p><a href="../add/module"  ><button type="button" class="btn btn-warning btn-lg">Ajouter un module</button></a></p>
+    <p><a href="{{ path('addCategorie') }}"><button type="button" class="btn btn-warning btn-lg">Ajouter une catégorie</button></a></p>
+    <p><a href="{{ path('addModule') }}"><button type="button" class="btn btn-warning btn-lg">Ajouter un module</button></a></p>
 
 
 {% endblock %}

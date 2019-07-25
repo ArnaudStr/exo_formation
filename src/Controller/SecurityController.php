@@ -14,11 +14,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        // if ($this->getUser()) {
-        //    $this->redirectToRoute('target_path');
-        // }
+    public function login(AuthenticationUtils $authenticationUtils): Response {
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -31,15 +27,14 @@ class SecurityController extends AbstractController
     /**
      * @Route("/logout", name="app_logout")
      */
-    public function logout()
-    {
-        throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
+    public function logout() {
+
     }
 
     /**
-     * @Route("/show/getAll", name="user_get_all")
+     * @Route("/show/getAllUsers", name="user_get_all")
      */
-    public function getAllUser(ObjectManager $em){
+    public function getAllUser(ObjectManager $em) {
 
         $users = $em->getRepository(User::class)->findAll();
 
@@ -48,12 +43,11 @@ class SecurityController extends AbstractController
             'users' => $users
         ]);
     }
-
-
+    
     /**
     * @Route("/delete/{id}", name="user_delete")
     */
-    public function deleteUser($id, ObjectManager $em){
+    public function deleteUser($id, ObjectManager $em) {
 
         $user = $em->getRepository(User::class)->find($id);
 

@@ -14,17 +14,18 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class RegistrationController extends AbstractController
 {
     /**
-     * @IsGranted("ROLE_ADMIN")
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
-    {
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response {
+        
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->addRole("ROLE_USER");
+
+            // On crée uniquement des users (crées pas l'admin)
+            $user->setRoles(["ROLE_USER"]);
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
@@ -32,15 +33,12 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            // $user->setRole
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
-
-            return $this->redirectToRoute('showListeFormations');
+            return $this->redirectToRoute('user_get_all');
         }
 
         return $this->render('registration/register.html.twig', [

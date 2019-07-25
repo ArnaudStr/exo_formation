@@ -29,7 +29,7 @@ class FormateurType extends AbstractType
             ->add('ville',TextType::class, ["required" => false])
             ->add('email',TextType::class)
             ->add('telephone',TextType::class)
-            // Collection type
+
             ->add('categories', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry_options' => ['label' => "Choisir catégorie :", "class" => Categorie::class,],
@@ -41,7 +41,9 @@ class FormateurType extends AbstractType
             
             ])
 
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider'
+            ])
         ;
     }
 

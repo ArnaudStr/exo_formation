@@ -54,18 +54,6 @@ class ShowController extends AbstractController {
     }
 
     /**
-     * @Route("/show/listeStagiairesSession/{id}", name="showListeStagiairesSession")
-     */
-    public function showListeStagiairesSession(Formation $formation, ObjectManager $manager, Request $request) {
-        
-        return $this->render('show/listeStagiairesSession.html.twig', [
-            'title' => 'Liste des stagiaires de la formation '.$formation,
-            'formation' => $formation
-        ]);
-    }
-
-
-    /**
      * @Route("/show/infoStagiaire/{id}", name="showInfoStagiaire")
      */
     // public function showInfoStagiaire(Stagiaire $stagiaire, ObjectManager $manager, Request $request) {
@@ -105,6 +93,7 @@ class ShowController extends AbstractController {
      * @Route("/show/listeModules", name="showListeModules")
      */
     public function showListeModules() {
+        // On récupere toutes les categories et donc tous les modules
         $all_categories = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
 
         return $this->render('show/listeModules.html.twig', [
@@ -113,7 +102,7 @@ class ShowController extends AbstractController {
         ]);
     }
 
-        /**
+    /**
      * @Route("/show/infoCategorie/{id}", name="showInfoCategorie")
      */
     public function showInfoCategorie(Categorie $categorie, ObjectManager $manager, Request $request) {
@@ -127,8 +116,7 @@ class ShowController extends AbstractController {
     /**
      * @Route("/show/calendar", name="session_calendar")
      */
-    public function calendar()
-    {
+    public function calendar() {
         return $this->render('show/calendar.html.twig', [
             'title' => 'Planning'
         ]);

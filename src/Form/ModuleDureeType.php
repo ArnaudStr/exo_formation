@@ -15,14 +15,14 @@ class ModuleDureeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('module',EntityType::class, [
-            "class"=> Module::class, 
-            "label" => 'Module:',
-        ])
-        ->add('duree', IntegerType::class, [
-            "label" => "Dureé du module (en jours) :",
-            'attr' => [ 'min' => 1 ]
-        ])
+            ->add('module',EntityType::class, [
+                "class"=> Module::class, 
+                "label" => 'Module:',
+            ])
+            ->add('duree', IntegerType::class, [
+                "label" => "Dureé du module (en jours) :",
+                'attr' => [ 'min' => 1 ]
+            ])
         ;
     }
 

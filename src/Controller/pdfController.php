@@ -44,7 +44,7 @@ class pdfController extends Controller
         $dompdf->render();
 
         // Output the generated PDF to Browser (force download)
-        $dompdf->stream("mypdf.pdf", [
+        $dompdf->stream("diplome.pdf", [
             "Attachment" => true
         ]);
     }

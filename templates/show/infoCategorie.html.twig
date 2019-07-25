@@ -20,9 +20,9 @@
 		</tbody>
 	</table>
 
-	<h2>Liste des formateurs de la categorie :</h2>
+	<h2>Liste des formateurs :</h2>
 
-	<table class="table table-striped">
+	<table class="table table-striped table-warning">
         <thead>
             <tr>
                 <th scope="col">Prénom</th>
@@ -46,7 +46,8 @@
 
         </tbody>
     </table>
-    <p><a href="../../add/module"  ><button type="button" class="btn btn-warning btn-lg">Ajouter un module</button></a></p>
+
+    <p><a href="{{ path('editCategorie',{'id':categorie.id}) }}"  ><button type="button" class="btn btn-warning btn-lg">Modifier la catégorie</button></a></p>
 
 
 {% endblock %}

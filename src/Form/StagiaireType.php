@@ -20,29 +20,31 @@ class StagiaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('nom',TextType::class)
-        ->add('prenom',TextType::class)
-        ->add('sexe',ChoiceType::class, ["choices"=>["Homme"=>"H", "Femme"=>"F"], "expanded"=>true])
-        ->add('dateNaissance',DateType::class, [
-            "years"=>range(date("Y")-7, date("Y")-77),
-            "label"=>"Date de naissance",
-            "format"=>"ddMMMMyyyy"
-        ])
-        ->add('ville',TextType::class, ["required" => false])
-        ->add('email',TextType::class)
-        ->add('telephone',TextType::class)
-        // Collection type
-        ->add('formations', CollectionType::class, [
-            'entry_type' => EntityType::class,
-            'entry_options' => ['label' => "Choisir formation :", "class" => Formation::class,],
-            'allow_add' => true,
-            'allow_delete' => true,
-            "required" => false,
-            "by_reference" => false,
-            'label' => false                               
-        ])
-        ->add('submit', SubmitType::class)
-    ;
+            ->add('nom',TextType::class)
+            ->add('prenom',TextType::class)
+            ->add('sexe',ChoiceType::class, ["choices"=>["Homme"=>"H", "Femme"=>"F"], "expanded"=>true])
+            ->add('dateNaissance',DateType::class, [
+                "years"=>range(date("Y")-7, date("Y")-77),
+                "label"=>"Date de naissance",
+                "format"=>"ddMMMMyyyy"
+            ])
+            ->add('ville',TextType::class, ["required" => false])
+            ->add('email',TextType::class)
+            ->add('telephone',TextType::class)
+            // Collection type
+            ->add('formations', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => ['label' => "Choisir formation :", "class" => Formation::class,],
+                'allow_add' => true,
+                'allow_delete' => true,
+                "required" => false,
+                "by_reference" => false,
+                'label' => false                               
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider'
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

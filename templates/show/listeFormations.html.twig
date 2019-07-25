@@ -18,24 +18,23 @@
         </thead>
         
         <tbody>
-        {% for formation in formations %}
-            {% set nbPlacesRestantes = formation.nbPlaces - formation.stagiaires|length %}
-            <tr>
-                <td>{{  formation.nom  }}</td>
-                <td>{{  formation.dateDebut|date("d/m/Y")  }}</td>
-                <td>{{  formation.dateFin|date("d/m/Y")  }}</td>
-                <td>{{  formation.nbPlaces  }}</td>
-                <td>{{  formation.stagiaires|length  }}</td>
-                <td>{{  nbPlacesRestantes  }}</td>
-                <td><a href="{{ path('showInfoSession',{'id':formation.id}) }}"><i class="fas fa-list-alt"></i></a></td>
-                <td><a href="{{ path('editFormation',{'id':formation.id}) }}"><i class="fas fa-edit"></i></a></td>
-                <td><a href="{{ path('deleteFormation',{'id':formation.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
-            </tr>
-        {% endfor %}
-
+            {% for formation in formations %}
+                {% set nbPlacesRestantes = formation.nbPlaces - formation.stagiaires|length %}
+                <tr>
+                    <td>{{  formation.nom  }}</td>
+                    <td>{{  formation.dateDebut|date("d/m/Y")  }}</td>
+                    <td>{{  formation.dateFin|date("d/m/Y")  }}</td>
+                    <td>{{  formation.nbPlaces  }}</td>
+                    <td>{{  formation.stagiaires|length  }}</td>
+                    <td>{{  nbPlacesRestantes  }}</td>
+                    <td><a href="{{ path('showInfoSession',{'id':formation.id}) }}"><i class="fas fa-list-alt"></i></a></td>
+                    <td><a href="{{ path('editFormation',{'id':formation.id}) }}"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="{{ path('deleteFormation',{'id':formation.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <p><a href="../add/formation"  ><button type="button" class="btn btn-warning btn-lg">Ajouter une formation</button></a></p>
+    <p><a href="{{ path('addFormation') }}"><button type="button" class="btn btn-warning btn-lg">Ajouter une formation</button></a></p>
 
 {% endblock %}

@@ -7,7 +7,7 @@
         <title>{% block title %}{{  "Diplôme"  }}{% endblock %}</title>
         {% block stylesheets %}
 
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> #}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}"> 
 
@@ -16,9 +16,8 @@
     
     <body>
 {% block body %}
-
     <h1 style="text-align: center;">Diplôme</h1>
-    <h3 style='color:red' id="formationdiplome">{{ formation.nom }}</h3>
+    <h3 style='color:red' id="formationdiplome">Diplôme de la formation {{ formation.nom }}</h3>
     <div class="decernediplome">
         <p>Décerné à  {{  stagiaire.prenom ~ " " ~ stagiaire.nom  }}  </p>
         <p>Fait à Strasbourg, le {{  "now"|date("d/m/Y")  }} </p>

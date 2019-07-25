@@ -3,27 +3,27 @@
 {% block body %}
    {{ form_start(form) }}
 
+        {{form_row(form.nom) }} 
+        {{form_row(form.prenom) }}
+        {{form_row(form.sexe) }}
+        {{form_row(form.dateNaissance) }}
+        {{form_row(form.ville) }}
+        {{form_row(form.email) }}
+        {{form_row(form.telephone) }}
 
-    {{form_row(form.nom) }} 
-    {{form_row(form.prenom) }}
-    {{form_row(form.sexe) }}
-    {{form_row(form.dateNaissance) }}
-    {{form_row(form.ville) }}
-    {{form_row(form.email) }}
-    {{form_row(form.telephone) }}
+        <ul id="formations" data-prototype= "{{ form_row(form.formations.vars.prototype)|e('html_attr') }}">
 
-    <ul id="formations" data-prototype= "{{ form_row(form.formations.vars.prototype)|e('html_attr') }}">
+            {% for formation in form.formations %}
+                <li>
+                    {{ form_row(formation) }}
+                </li>
+            {% endfor %}
 
-        {% for formation in form.formations %}
-            <li>
-                {{ form_row(formation) }}
-            </li>
-        {% endfor %}
+        </ul>
 
-    </ul>
-
-      {{form_row(form.submit) }} 
-{{ form_end(form) }}
+        {{form_row(form.submit) }} 
+        
+    {{ form_end(form) }}
 
 {% endblock %}
 

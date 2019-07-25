@@ -53,16 +53,15 @@ class FormationType extends AbstractType
             ->add('dureeModules', CollectionType::class, [
                 'entry_type' => ModuleDureeType::class,
                 'entry_options' => ['label' => "Choisir module :", ],
-                
                 'allow_add' => true,
                 'allow_delete' => true,
-                // "required" => false,
                 "by_reference" => false,
                 'label' => false 
             ])
 
-            ->add('submit', SubmitType::class)
-        ;
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

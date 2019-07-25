@@ -29,7 +29,6 @@ class AddEditController extends AbstractController {
         
         // parcours du tableau des durées
         $i = 0;
-        // $dureesModules;
         $modif = true;
         // Ajout d'une formation
         if(!$formation) {
@@ -41,6 +40,7 @@ class AddEditController extends AbstractController {
         $form = $this->createForm(FormationType::class, $formation);
 
         if(!$modif){
+            // On ne permet pas la création de stagiaire lors de la création de la formation
             $form->remove('stagiaires');
         }
         else{
@@ -52,21 +52,6 @@ class AddEditController extends AbstractController {
                
         // Validation du formulaire
         if($form->isSubmitted() && $form->isValid()) {
-           
-            /* Ajouter les modules avec leur date correspondantes
-            $modules = $form->get('dureeModules')->getData();
-            
-            foreach ($modules as $module) {
-                $dureeModule[] = new DureeModule();
-                $dureeModule[$i]->setFormation($formation);
-                $dureeModule[$i]->setModule($module->getModule());
-                $dureeModule[$i]->setDuree($module->getDuree());
-                $manager->persist($dureeModule[$i]);
-                $i++;
-            }
-
-            // dump($dureeModule);
-            */
             // On ajoute la formation en BDD
             $manager->persist($formation);
             $manager->flush();
@@ -134,8 +119,6 @@ class AddEditController extends AbstractController {
   
         return $this->redirectToRoute('showListeFormateurs');
     }
-
-
 
     /**
      * @Route("/add/stagiaire", name="addStagiaire")

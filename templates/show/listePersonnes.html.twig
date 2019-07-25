@@ -25,47 +25,33 @@
                 <th scope="col">Détails</th>
                 <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
-    
             </tr>
         </thead>
         
         <tbody>
             {% for personne in personnes %}
-            
-            <tr>
-                
-                {% if stagiaires is defined %}
-
-
-                    <td><a href="{{ path('showInfoStagiaire',{'id':personne.id}) }}" >{{ personne.prenom }}</a></td>
-                    <td><a href="{{ path('showInfoStagiaire',{'id':personne.id}) }}" >{{ personne.nom }}</a></td>
-                    <td>{{ personne.sexe }}</td>
-                    <td>{{ personne.dateNaissance | date("d/m/Y") }}</td>
-                    <td>{{ personne.ville }}</td>
-                    <td>{{ personne.email }}</td>
-                    <td>{{ personne.telephone }}</td>
-                    <td><a href="{{ path('showInfoStagiaire',{'id':personne.id}) }}"><i class="fas fa-list-alt"></i></a></td>
-                    <td><a href="{{ path('editStagiaire',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td>
-                    <td><a href="{{ path('deleteStagiaire',{'id':personne.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
-
-                    
-
-                {% else %}
-
+                <tr>
                     <td>{{ personne.prenom }}</a></td>
                     <td>{{ personne.nom }}</a></td>
                     <td>{{ personne.sexe }}</td>
                     <td>{{ personne.dateNaissance | date("d/m/Y") }}</td>
                     <td>{{ personne.ville }}</td>
                     <td>{{ personne.email }}</td>
-                    <td>{{ personne.telephone }}</td>
-                    <td><a href="{{ path('showInfoFormateur',{'id':personne.id}) }}"><i class="fas fa-list-alt"></i></a></td>
-                    <td><a href="{{ path('editFormateur',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td>
-                    <td><a href="{{ path('deleteFormateur',{'id':personne.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+                    <td>{{ personne.telephone }}</td>    
+                    {% if stagiaires is defined %}
 
-                {% endif %}
+                        <td><a href="{{ path('showInfoStagiaire',{'id':personne.id}) }}"><i class="fas fa-list-alt"></i></a></td>
+                        <td><a href="{{ path('editStagiaire',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td>
+                        <td><a href="{{ path('deleteStagiaire',{'id':personne.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
 
-            </tr>
+                    {% else %}
+
+                        <td><a href="{{ path('showInfoFormateur',{'id':personne.id}) }}"><i class="fas fa-list-alt"></i></a></td>
+                        <td><a href="{{ path('editFormateur',{'id':personne.id}) }}"><i class="fas fa-edit"></i></a></td>
+                        <td><a href="{{ path('deleteFormateur',{'id':personne.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+
+                    {% endif %}
+                </tr>
             
             {% endfor %}
         </tbody>
@@ -73,11 +59,11 @@
 
     {% if stagiaires is defined %}
 
-        <p><a href="../add/stagiaire"  ><button type="button" class="btn btn-warning btn-lg">Ajouter un stagiaire</button></a></p>
+        <p><a href="{{ path('addStagiaire') }}"  ><button type="button" class="btn btn-warning btn-lg">Ajouter un stagiaire</button></a></p>
 
     {% else %}
 
-        <p><a href="../add/formateur"  ><button type="button" class="btn btn-warning btn-lg">Ajouter un formateur</button></a></p>
+        <p><a href="{{ path('addFormateur') }}"  ><button type="button" class="btn btn-warning btn-lg">Ajouter un formateur</button></a></p>
 
     {% endif %}
 

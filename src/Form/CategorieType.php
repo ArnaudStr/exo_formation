@@ -42,7 +42,9 @@ class CategorieType extends AbstractType
                 'label' => false             
             ])
 
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider'
+            ])
         ;
     }
 

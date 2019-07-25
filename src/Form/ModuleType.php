@@ -22,7 +22,9 @@ class ModuleType extends AbstractType
                 "class"=>Categorie::class, 
                 "choice_label" => 'nom'
             ])
-            ->add('Valider', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider'
+            ])
         ;
     }
 

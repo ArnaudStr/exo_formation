@@ -27,19 +27,27 @@ class Module
     private $nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Formation", mappedBy="modules")
-     */
-    private $formations;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="modules")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DureeModule", mappedBy="module", orphanRemoval=true)
+     */
+    private $durees;
+
     public function __construct()
     {
-        $this->formations = new ArrayCollection();
+        $this->durees = new ArrayCollection();
+    }
+
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString(){
+        return $this->getNom();
     }
 
     public function getId(): ?int
@@ -59,34 +67,6 @@ class Module
         return $this;
     }
 
-    /**
-     * @return Collection|Formation[]
-     */
-    public function getFormations(): Collection
-    {
-        return $this->formations;
-    }
-
-    public function addFormation(Formation $formation): self
-    {
-        if (!$this->formations->contains($formation)) {
-            $this->formations[] = $formation;
-            $formation->addModule($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFormation(Formation $formation): self
-    {
-        if ($this->formations->contains($formation)) {
-            $this->formations->removeElement($formation);
-            $formation->removeModule($this);
-        }
-
-        return $this;
-    }
-
     public function getCategorie(): ?Categorie
     {
         return $this->categorie;
@@ -98,12 +78,36 @@ class Module
 
         return $this;
     }
-    
+
     /**
-     * toString
-     * @return string
+     * @return Collection|DureeModule[]
      */
-    public function __toString(){
-        return $this->getNom();
+    public function getDurees(): Collection
+    {
+        return $this->durees;
     }
+
+    public function addDuree(DureeModule $duree): self
+    {
+        if (!$this->durees->contains($duree)) {
+            $this->durees[] = $duree;
+            $duree->setModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDuree(DureeModule $duree): self
+    {
+        if ($this->durees->contains($duree)) {
+            $this->durees->removeElement($duree);
+            // set the owning side to null (unless already changed)
+            if ($duree->getModule() === $this) {
+                $duree->setModule(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

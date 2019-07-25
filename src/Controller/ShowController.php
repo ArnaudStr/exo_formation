@@ -125,9 +125,9 @@ class ShowController extends AbstractController {
     }
 
     /**
-     * @Route("/show/calendar", name="session_calendar", methods={"GET"})
+     * @Route("/show/calendar", name="session_calendar")
      */
-    public function calendar(): Response
+    public function calendar()
     {
         return $this->render('show/calendar.html.twig', [
             'title' => 'Planning'

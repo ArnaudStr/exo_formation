@@ -56,7 +56,6 @@ class Formation
     public function __construct()
     {
         $this->stagiaires = new ArrayCollection();
-        $this->modules = new ArrayCollection();
         $this->dureeModules = new ArrayCollection();
     }
 

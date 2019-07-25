@@ -71,7 +71,7 @@ class Categorie
     {
         if (!$this->modules->contains($module)) {
             $this->modules[] = $module;
-            $module->setCategorie($this);
+            //$module->setCategorie($this);
         }
 
         return $this;
@@ -81,10 +81,10 @@ class Categorie
     {
         if ($this->modules->contains($module)) {
             $this->modules->removeElement($module);
-            // set the owning side to null (unless already changed)
+            /* set the owning side to null (unless already changed)
             if ($module->getCategorie() === $this) {
                 $module->setCategorie(null);
-            }
+            }*/
         }
 
         return $this;

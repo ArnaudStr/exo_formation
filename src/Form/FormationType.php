@@ -45,7 +45,8 @@ class FormationType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 "required" => false,
-                "by_reference" => false                                
+                "by_reference" => false,
+                'label' => false                               
             ])
 
             ->add('dureeModules', CollectionType::class, [
@@ -54,7 +55,7 @@ class FormationType extends AbstractType
                 
                 'allow_add' => true,
                 'allow_delete' => true,
-                "required" => false,
+                // "required" => false,
                 "by_reference" => false,
                 'label' => false 
             ])

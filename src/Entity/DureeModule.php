@@ -17,7 +17,7 @@ class DureeModule
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\formation", inversedBy="dureeModules")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Formation", inversedBy="dureeModules")
      * @ORM\JoinColumn(nullable=false)
      */
     private $formation;
@@ -28,7 +28,7 @@ class DureeModule
     private $duree;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Module")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Module", inversedBy="durees")
      * @ORM\JoinColumn(nullable=false)
      */
     private $module;

@@ -15,6 +15,16 @@
 
         </ul>
 
+        <ul id="modules" data-prototype= "{{ form_row(form.modules.vars.prototype)|e('html_attr') }}">
+
+            {% for module in form.modules %}
+                <li>
+                    {{ form_row(module) }}
+                </li>
+            {% endfor %}
+
+        </ul>
+
         {{form_row(form.submit) }} 
     {{ form_end(form) }}
 
@@ -23,4 +33,5 @@
 {% block javascripts %}
     {{ parent()}}
     <script src="/js/categorieHandler.js"></script>
+    <script src="/js/categorieHandlerModule.js"></script>
 {% endblock %}

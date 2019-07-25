@@ -32,6 +32,16 @@ class CategorieType extends AbstractType
                 'label' => false             
             ])
 
+            ->add('modules', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => ['label' => "Choisir module :", "class" => Module::class,],
+                'allow_add' => true,
+                'allow_delete' => true,
+                "required" => false,
+                "by_reference" => false,
+                'label' => false             
+            ])
+
             ->add('submit', SubmitType::class)
         ;
     }

@@ -27,10 +27,8 @@ class AddEditController extends AbstractController {
      */
     public function addEditFormation(Formation $formation = null, ObjectManager $manager, Request $request) {
         
-        // creation du formulaire (ajout ou modification)
-        $form = $this->createForm(FormationType::class, $formation);
         // parcours du tableau des durées
-        $i=0;
+        $i = 0;
         // $dureesModules;
         $modif = true;
         // Ajout d'une formation
@@ -38,24 +36,25 @@ class AddEditController extends AbstractController {
             $modif = false;
             $formation = new Formation();
             $title = 'Ajout d\'une formation ';
+        }
+        // creation du formulaire (ajout ou modification)
+        $form = $this->createForm(FormationType::class, $formation);
+
+        if(!$modif){
             $form->remove('stagiaires');
         }
-
-        // Modification d'une formation
-        else {
+        else{
             $title = 'Modification de la formation '.$formation;
         }
- 
-        
 
         // Pour le contrôle des données entrées dans le formulaire
         $form->handleRequest($request);
                
         // Validation du formulaire
         if($form->isSubmitted() && $form->isValid()) {
-
-            // Ajouter les modules avec leur date correspondantes
-            $modules = $form->get('durees')->getData();
+           
+            /* Ajouter les modules avec leur date correspondantes
+            $modules = $form->get('dureeModules')->getData();
             
             foreach ($modules as $module) {
                 $dureeModule[] = new DureeModule();
@@ -66,8 +65,8 @@ class AddEditController extends AbstractController {
                 $i++;
             }
 
-            dump($dureeModule);
-
+            // dump($dureeModule);
+            */
             // On ajoute la formation en BDD
             $manager->persist($formation);
             $manager->flush();

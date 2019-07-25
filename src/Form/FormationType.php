@@ -48,10 +48,10 @@ class FormationType extends AbstractType
                 "by_reference" => false                                
             ])
 
-            ->add('durees', CollectionType::class, [
+            ->add('dureeModules', CollectionType::class, [
                 'entry_type' => ModuleDureeType::class,
                 'entry_options' => ['label' => "Choisir module :", ],
-                'mapped' => false,
+                
                 'allow_add' => true,
                 'allow_delete' => true,
                 "required" => false,

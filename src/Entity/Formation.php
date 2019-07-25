@@ -44,17 +44,12 @@ class Formation
     private $stagiaires;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Module", inversedBy="formations")
-     */
-    private $modules;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DureeModule", mappedBy="formation", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\DureeModule", mappedBy="formation", orphanRemoval=true, cascade={"persist"})
      */
     private $dureeModules;
 
@@ -132,32 +127,6 @@ class Formation
         return $this;
     }
 
-    /**
-     * @return Collection|Module[]
-     */
-    public function getModules(): Collection
-    {
-        return $this->modules;
-    }
-
-    public function addModule(Module $module): self
-    {
-        if (!$this->modules->contains($module)) {
-            $this->modules[] = $module;
-        }
-
-        return $this;
-    }
-
-    public function removeModule(Module $module): self
-    {
-        if ($this->modules->contains($module)) {
-            $this->modules->removeElement($module);
-        }
-
-        return $this;
-    }
-
     public function getNom(): ?string
     {
         return $this->nom;
@@ -216,10 +185,4 @@ class Formation
         return $this;
     }
 
-    public function setModules(?string $modules): self
-    {
-        $this->modules = $modules;
-
-        return $this;
-    }
 }

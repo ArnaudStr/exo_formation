@@ -55,7 +55,8 @@ class FormationType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 "required" => false,
-                "by_reference" => false  
+                "by_reference" => false,
+                'label' => false 
             ])
 
 

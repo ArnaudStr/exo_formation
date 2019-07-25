@@ -43,7 +43,7 @@ class SecurityController extends AbstractController
 
         $users = $em->getRepository(User::class)->findAll();
 
-        return $this->render('admin/allUsers.html.twig', [
+        return $this->render('show/allUsers.html.twig', [
             'title' => 'Liste des utilisateurs',
             'users' => $users
         ]);

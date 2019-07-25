@@ -1,22 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% if is_granted('ROLE_ADMIN') %}
-  <table>
-    <tbody>
-      {% for user in users %}
-        <tr>
-          <td>{{ user.username }} </td>  
+    {% if is_granted('ROLE_ADMIN') %}
+    <table class="table table-striped table-warning">
+        <thead>
+            <tr>
+                <th scope="col">Utilisateur</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
 
-          <td> <a class="btn" href="{{ path('user_delete', {'id':user.id}) }}"> Delete </td>   </ac>
-
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-{% else %}
-<h2>ACCES REFUSE<H2>
-{% endif %}
+        <tbody>
+        {% for user in users %}
+            {% if 'ROLE_ADMIN' not in user.roles %}
+                <tr>
+                    <td>{{ user.username }} </td>  
+                    <td><a href="{{ path('user_delete', {'id':user.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+        </table>
+        {% else %}
+        <h2>ACCES REFUSE<H2>
+    {% endif %}
 
 {% endblock %}
 

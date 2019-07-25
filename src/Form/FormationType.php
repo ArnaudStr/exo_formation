@@ -33,10 +33,11 @@ class FormationType extends AbstractType
                 "format"=>"ddMMMMyyyy"
             ])
             ->add("nbPlaces", IntegerType::class, [
+                "label" => "Nombre de places",
                 'attr' => [
                     "min" => 1,
                     "max" => 100,
-                    "label" => "Nombre de places" ]
+                 ]
             ])
 
             ->add('stagiaires', CollectionType::class, [
@@ -59,25 +60,6 @@ class FormationType extends AbstractType
                 "by_reference" => false,
                 'label' => false 
             ])
-
-
-            // ->add('dureeModules', CollectionType::class, [
-            //     'entry_type' => EntityType::class,
-            //     'entry_options' => ['label' => "Choisir module :", "class" => DureeModule::class,],
-            //     'allow_add' => true,
-            //     'allow_delete' => true,
-            //     "required" => false,
-            //     "by_reference" => false                
-            // ])
-
-            // ->add('durees', CollectionType::class, [
-            //     'entry_type' => IntegerType::class,
-            //     'entry_options' => ['label' => "Durée du module :"],
-            //     'allow_add' => true,
-            //     'allow_delete' => true,
-            //     "required" => false,
-            //     "by_reference" => false                
-            // ])
 
             ->add('submit', SubmitType::class)
         ;

@@ -20,7 +20,8 @@ class ModuleDureeType extends AbstractType
             "label" => 'Module:',
         ])
         ->add('duree', IntegerType::class, [
-            "label" => "Dureé du module (en jours) :"
+            "label" => "Dureé du module (en jours) :",
+            'attr' => [ 'min' => 1 ]
         ])
         ;
     }

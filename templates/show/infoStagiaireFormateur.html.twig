@@ -54,14 +54,13 @@
             
             <tbody>
                 {% for formation in stagiaire.formations %}
-                    {% if formation.dateFin < date() %}
-                        <tr>
-                            <td><a href="{{ path('showInfoSession',{'id':formation.id}) }}"><strong>{{ formation }}</strong> {{ ' (Du ' ~ formation.dateDebut | date("d/m/Y") ~ ' au ' ~ formation.dateFin | date("d/m/Y") ~ ') ' }}</a></td>
-                        </tr>
-                        
-                    {% else %}
+                    {% if formation.dateFin < date() %} 
                         <tr>
                             <td><a href="{{ path('showInfoSession',{'id':formation.id}) }}"><strong>{{ formation }}</strong> {{ ' (terminée le ' ~ formation.dateFin | date("d/m/Y") ~ ') ' }}</a><a href=" {{ path("createPdf", { "id": personne.id, "id_formation" : formation.id } ) }}  " ><button type="button" class="btn btn-warning" >Obtenir le diplôme en PDF</button></a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td><a href="{{ path('showInfoSession',{'id':formation.id}) }}"><strong>{{ formation }}</strong> {{ ' (Du ' ~ formation.dateDebut | date("d/m/Y") ~ ' au ' ~ formation.dateFin | date("d/m/Y") ~ ') ' }}</a></td>
                         </tr>
                     {% endif %}
                 {% endfor %}
